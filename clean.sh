@@ -7,6 +7,7 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 TMP_FOLDER=${TMPDIR-/tmp}
 sWebUser=`ps aux | grep -E '[a]pache|[h]ttpd|[_]www|[w]ww-data' | grep -v root | head -1 | cut -d\  -f1`
 sComposer=""
+sNPM=""
 
 # --------------------------------------------------------------------------
 # Helper functions
@@ -23,6 +24,11 @@ function verifyRequirements ()
 	else
 		exit 1
 	fi
+	if commandExists npm ; then
+		sNPM=`command -v npm`
+	else
+		exit 1
+	fi
 }
 
 function applicationOwner ()
@@ -32,10 +38,11 @@ function applicationOwner ()
 
 function applicationInstall ()
 {
-	declare -a GENERATED_DIRECTORIES=("app/cache/" "app/logs/" "bin/" "vendor/" "web/bundles/")
+	declare -a GENERATED_DIRECTORIES=("app/cache/" "app/logs/" "bin/" "vendor/" "web/bundles/" "node_modules")
 	for sPath in ${GENERATED_DIRECTORIES[@]} ; do
 		rm -rf ${DIR}/${sPath}
 	done
+	${sNPM} install
 	${sComposer} install
 }
 

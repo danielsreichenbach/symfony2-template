@@ -27,3 +27,32 @@ of spice on top of it:
 * a Capistrano 3 deployment recipe which includes everything from setup
   to regular deployments to keeping your target environments clean.
 * support for Node.js and Ruby Gem bundles on target hosts.
+
+## Requirements
+
+The template is intended for environments running Debian 7 or newer
+with PHP 5.4, MySQL 5.5+, and nginx.
+
+In addition the host has to be enabled for using file system Access
+Control Lists.
+
+Since assets are not stored in their generated form, we expect a
+Node.js/NPM installation on the host.
+
+To use the provided deployment and manage cron tabs on the deployment
+target hosts, we require Ruby/RubyGems support and the Bundler gem
+installed.
+
+## Notes
+
+We plan to extend the template for support [Dashbrew][dashbrew] soon(tm).
+
+
+[composer]: http://getcomposer.org/
+[symfony]:  http://symfony.com/doc/2.7/book/installation.html
+[node]:     http://www.nodejs.org/
+[npm]:      http://www.npmjs.org/
+[ruby]:     https://www.ruby-lang.org/
+[rubygems]: https://rubygems.org/
+[bundler]:  http://bundler.io/
+[dashbrew]: https://github.com/mdkholy/dashbrew

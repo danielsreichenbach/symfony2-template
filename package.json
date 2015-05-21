@@ -1,0 +1,30 @@
+{
+    "name": "symfony2-lts-template",
+    "description": "The one true template to rule them all",
+    "keywords": [
+        "build",
+        "template"
+    ],
+    "license": "MIT",
+    "version": "1.0.0",
+    "homepage": "http://marenkay.com/",
+    "author": "Daniel S. Reichenbach <daniel@kogitoapp.com",
+    "repository": {
+        "type": "git",
+        "url": "git@scratch.kogitoapp.com:danielsreichenbach/symfony-lts-template.git"
+    },
+    "private": true,
+    "devDependencies": {},
+    "dependencies": {
+        "grunt-cli": "~0.1.13",
+        "grunt-autoprefixer": "~3.0.0",
+        "grunt-contrib-clean": "~0.6.0",
+        "grunt-contrib-concat": "~0.5.1",
+        "grunt-contrib-cssmin": "~0.12.2",
+        "grunt-contrib-uglify": "~0.9.1",
+        "grunt-contrib-watch": "~0.6.1",
+        "grunt-sass": "~0.18.1"
+    },
+    "scripts": {
+    }
+}
