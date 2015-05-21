@@ -1,0 +1,28 @@
+{
+    "folders":
+    [
+        {
+            "path": ".",
+            "name": "lts-project@symfony2",
+            "folder_exclude_patterns": [
+                ".bundle",
+                ".capistrano",
+                ".idea",
+                "node_modules",
+                "app/cache",
+                "app/logs",
+                "app/sessions"
+            ],
+            "file_exclude_patterns": [
+                "app/bootstrap.php.cache",
+                "composer.lock",
+                "composer.phar",
+                "Gemfile.lock",
+                "*.sublime-*"
+            ]
+        }
+    ],
+    "build_systems":
+    [
+    ]
+}

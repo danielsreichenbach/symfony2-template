@@ -1,0 +1,85 @@
+{
+    "name": "daniel/symfony2-lts-template",
+    "description": "The one true template to rule them all",
+    "type": "project",
+    "license": "MIT",
+    "homepage": "http://marenkay.com",
+    "authors": [
+        {
+            "name": "Daniel S. Reichenbach",
+            "email": "daniel@kogitoapp.com",
+            "homepage": "http://marenkay.com/",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "email": "daniel@kogitoapp.com",
+        "issues": "https://scratch.kogitoapp.com/danielsreichenbach/symfony-lts-template/issues",
+        "source": "https://scratch.kogitoapp.com/danielsreichenbach/symfony-lts-template"
+    },
+    "require": {
+        "php":                                  ">=5.4.5",
+        "ext-curl":                             "*",
+        "ext-pdo_mysql":                        "*",
+
+        "symfony/symfony":                      "~2.7@beta",
+        "doctrine/orm":                         "~2.2,>=2.2.3,<2.5",
+        "doctrine/dbal":                        "<2.5",
+        "doctrine/doctrine-bundle":             "~1.4",
+        "symfony/assetic-bundle":               "~2.3",
+        "symfony/swiftmailer-bundle":           "~2.3",
+        "symfony/monolog-bundle":               "~2.4",
+        "sensio/distribution-bundle":           "~3.0,>=3.0.12",
+        "sensio/framework-extra-bundle":        "~3.0,>=3.0.2",
+        "incenteev/composer-parameter-handler": "~2.0"
+    },
+    "require-dev": {
+        "sensio/generator-bundle":              "~2.3",
+        "phpspec/phpspec":                      "~2.1",
+        "phpunit/phpunit":                      "~4.1",
+        "leaphub/phpcs-symfony2-standard":      "~2.0"
+    },
+    "suggest": {
+        "ext-xdebug":                           ">=2.2.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "": "src/",
+            "SymfonyStandard\\": "app/"
+        }
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "scripts": {
+        "post-root-package-install": [
+            "SymfonyStandard\\Composer::hookRootPackageInstall"
+        ],
+        "post-install-cmd": [
+            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::removeSymfonyStandardFiles",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
+        ],
+        "post-update-cmd": [
+            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::removeSymfonyStandardFiles",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
+        ]
+    },
+    "extra": {
+        "symfony-app-dir": "app",
+        "symfony-web-dir": "web",
+        "symfony-assets-install": "relative",
+        "incenteev-parameters": {
+            "file": "app/config/parameters.yml"
+        }
+    }
+}

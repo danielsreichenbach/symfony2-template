@@ -1,0 +1,35 @@
+# Add directories, files, and symbolic links which shall not be stored within
+# this git repository here.
+
+# JetBrains IDE - project settings
+/.idea/
+
+# Sublime Text 2 - project files
+/*.sublime-workspace
+
+# Numerous always-ignore extensions
+*.diff
+*.orig
+*.rej
+*.swp
+*~
+
+# Configuration files to be customized
+/app/phpunit.xml
+/app/config/parameters.yml
+
+# Cache and log files
+/app/*\.cache
+/app/cache/*
+/app/logs/*
+
+# Generated files, vendor libraries
+/bin/
+/vendor/*
+/web/bundles/
+
+# Vendor apps
+/composer.phar
+/selenium-server-standalone-2.38.0.jar
+
+# Miscellaneous generated files
