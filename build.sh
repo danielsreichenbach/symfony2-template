@@ -1,4 +1,8 @@
 #!/bin/bash
+#
+# This script helps keeping the project in a pristine state, in which it can
+# be installed and configured in both development and deployment mode.#
+#
 
 # --------------------------------------------------------------------------
 # Prepare required variables
@@ -10,8 +14,28 @@ sComposer=""
 sNPM=""
 
 # --------------------------------------------------------------------------
+# Source CLI helpers
+# --------------------------------------------------------------------------
+. ./libui.sh
+libui_sh_init "cli"
+
+# --------------------------------------------------------------------------
 # Helper functions
 # --------------------------------------------------------------------------
+function usage()
+{
+	echo "Usage: " $(basename "${BASH_SOURCE[0]}") " [OPTIONS]"
+	echo
+	echo "Prepares the build tree to present a clean environment.             "
+	echo
+	echo "   -c, --clean           Removes local packages and generated files."
+	echo "   -i, --install     Install local packages and generate base files."
+	echo
+	echo "Example:"
+	echo "  " $(basename "${BASH_SOURCE[0]}") " -i"
+	echo
+}
+
 function commandExists ()
 {
 	command -v "$1" &> /dev/null ;
@@ -22,12 +46,12 @@ function verifyRequirements ()
 	if commandExists composer ; then
 		sComposer=`command -v composer`
 	else
-		exit 1
+		die_error "Composer is not installed or not within PATH"
 	fi
 	if commandExists npm ; then
 		sNPM=`command -v npm`
 	else
-		exit 1
+		die_error "Node.js/NPM is not installed or not within PATH"
 	fi
 }
 
@@ -36,23 +60,61 @@ function applicationOwner ()
 	sudo chown -R `whoami`.`whoami` ${DIR}/
 }
 
-function applicationInstall ()
+function applicationCleanup ()
 {
 	declare -a GENERATED_DIRECTORIES=("app/cache/" "app/logs/" "bin/" "vendor/" "web/bundles/" "node_modules")
 	for sPath in ${GENERATED_DIRECTORIES[@]} ; do
 		rm -rf ${DIR}/${sPath}
 	done
+}
+
+function applicationInstall ()
+{
 	${sNPM} install
 	${sComposer} install
 }
 
 # --------------------------------------------------------------------------
+# Check number of parameters and environment
+# --------------------------------------------------------------------------
+if [[ $# = 0 ]]; then
+    usage
+    die_error "Please chose a mode to continue."
+fi
+
+verifyRequirements
+
+# --------------------------------------------------------------------------
+# Parse command line parameters
+# --------------------------------------------------------------------------
+for i in "$@"
+do
+case $i in
+	-c|--clean)
+	sClean=true
+	shift
+	;;
+	-i|--install)
+	sInstall=true
+	shift
+	;;
+	*)
+	usage
+	die_error "Unknown parameter specified"
+	;;
+esac
+done
+
+# --------------------------------------------------------------------------
 # Rebuilding application data ...
 # --------------------------------------------------------------------------
-verifyRequirements
 applicationOwner
 
-if [ "$1" = "full" ] ; then
+if [ "${sClean}" == "true" ]; then
+	applicationCleanup
+fi
+
+if [ "${sInstall}" == "true" ]; then
 	applicationInstall
 fi
 
