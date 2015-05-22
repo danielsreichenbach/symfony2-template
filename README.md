@@ -43,16 +43,11 @@ To use the provided deployment and manage cron tabs on the deployment
 target hosts, we require Ruby/RubyGems support and the Bundler gem
 installed.
 
-## Notes
-
-We plan to extend the template for support [Dashbrew][dashbrew] soon(tm).
-
-
-[composer]: http://getcomposer.org/
-[symfony]:  http://symfony.com/doc/2.7/book/installation.html
-[node]:     http://www.nodejs.org/
-[npm]:      http://www.npmjs.org/
-[ruby]:     https://www.ruby-lang.org/
-[rubygems]: https://rubygems.org/
-[bundler]:  http://bundler.io/
-[dashbrew]: https://github.com/mdkholy/dashbrew
+[composer]:     http://getcomposer.org/
+[symfony]:      http://symfony.com/doc/2.7/book/installation.html
+[node]:         http://www.nodejs.org/
+[npm]:          http://www.npmjs.org/
+[ruby]:         http://www.ruby-lang.org/
+[rubygems]:     http://rubygems.org/
+[bundler]:      http://bundler.io/
+[mailcatcher]:  http://mailcatcher.me/
