@@ -17,6 +17,7 @@
 # Configuration files to be customized
 /app/phpunit.xml
 /app/config/parameters.yml
+/app/config/deploy.rb
 
 # Cache and log files
 /app/*\.cache
@@ -28,6 +29,8 @@
 /node_modules/
 /vendor/*
 /web/bundles/
+/web/css/
+/web/js/
 
 # Vendor apps
 /composer.phar

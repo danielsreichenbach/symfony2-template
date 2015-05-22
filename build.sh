@@ -12,6 +12,7 @@ TMP_FOLDER=${TMPDIR-/tmp}
 sWebUser=`ps aux | grep -E '[a]pache|[h]ttpd|[_]www|[w]ww-data' | grep -v root | head -1 | cut -d\  -f1`
 sComposer=""
 sNPM=""
+sCapistrano=""
 
 # --------------------------------------------------------------------------
 # Source CLI helpers
@@ -30,6 +31,7 @@ function usage()
 	echo
 	echo "   -c, --clean           Removes local packages and generated files."
 	echo "   -i, --install     Install local packages and generate base files."
+	echo "   -b, --build                             Build and install assets."
 	echo
 	echo "Example:"
 	echo "  " $(basename "${BASH_SOURCE[0]}") " -i"
@@ -48,10 +50,17 @@ function verifyRequirements ()
 	else
 		die_error "Composer is not installed or not within PATH"
 	fi
+
 	if commandExists npm ; then
 		sNPM=`command -v npm`
 	else
 		die_error "Node.js/NPM is not installed or not within PATH"
+	fi
+
+	if commandExists cap ; then
+		sCapistrano=`command -v cap`
+	else
+		die_error "Capistrano is not installed or not within PATH"
 	fi
 }
 
@@ -72,6 +81,11 @@ function applicationInstall ()
 {
 	${sNPM} install
 	${sComposer} install
+}
+
+function applicationBuild ()
+{
+	${DIR}/node_modules/.bin/grunt
 }
 
 # --------------------------------------------------------------------------
@@ -98,6 +112,10 @@ case $i in
 	sInstall=true
 	shift
 	;;
+	-b|--build)
+	sBuild=true
+	shift
+	;;
 	*)
 	usage
 	die_error "Unknown parameter specified"
@@ -116,6 +134,10 @@ fi
 
 if [ "${sInstall}" == "true" ]; then
 	applicationInstall
+fi
+
+if [ "${sBuild}" == "true" ]; then
+	applicationBuild
 fi
 
 # --------------------------------------------------------------------------
