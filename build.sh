@@ -10,9 +10,13 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 TMP_FOLDER=${TMPDIR-/tmp}
 sWebUser=`ps aux | grep -E '[a]pache|[h]ttpd|[_]www|[w]ww-data' | grep -v root | head -1 | cut -d\  -f1`
+
 sComposer=""
 sNPM=""
 sCapistrano=""
+
+sClean=false
+sInstall=false
 
 # --------------------------------------------------------------------------
 # Source CLI helpers
@@ -31,7 +35,6 @@ function usage()
 	echo
 	echo "   -c, --clean           Removes local packages and generated files."
 	echo "   -i, --install     Install local packages and generate base files."
-	echo "   -b, --build                             Build and install assets."
 	echo
 	echo "Example:"
 	echo "  " $(basename "${BASH_SOURCE[0]}") " -i"
@@ -62,6 +65,12 @@ function verifyRequirements ()
 	else
 		die_error "Capistrano is not installed or not within PATH"
 	fi
+
+	if ! [ -d ${DIR}/node_modules/ ] ; then
+		sInstall=true
+	elif ! [ -d ${DIR}/vendor/ ] ; then
+		sInstall=true
+	fi
 }
 
 function applicationOwner ()
@@ -89,13 +98,8 @@ function applicationBuild ()
 }
 
 # --------------------------------------------------------------------------
-# Check number of parameters and environment
+# Check and environment
 # --------------------------------------------------------------------------
-if [[ $# = 0 ]]; then
-    usage
-    die_error "Please chose a mode to continue."
-fi
-
 verifyRequirements
 
 # --------------------------------------------------------------------------
@@ -110,10 +114,6 @@ case $i in
 	;;
 	-i|--install)
 	sInstall=true
-	shift
-	;;
-	-b|--build)
-	sBuild=true
 	shift
 	;;
 	*)
@@ -136,9 +136,7 @@ if [ "${sInstall}" == "true" ]; then
 	applicationInstall
 fi
 
-if [ "${sBuild}" == "true" ]; then
-	applicationBuild
-fi
+applicationBuild
 
 # --------------------------------------------------------------------------
 # Prepare the development environment for a full run of the mill ...
