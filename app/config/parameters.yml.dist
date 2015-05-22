@@ -20,4 +20,4 @@ parameters:
     locale:            en
 
     # A secret key that's used to generate certain security-related tokens
-    secret:            ThisTokenIsNotSoSecretChangeIt
+    secret:            290fa0ca5394f3ea4d9063fa4f4695de6beeb525
