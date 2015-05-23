@@ -37,6 +37,7 @@
         "doctrine/doctrine-migrations-bundle":  "2.1.*@dev"
     },
     "require-dev": {
+        "doctrine/doctrine-fixtures-bundle":    "~2.2",
         "sensio/generator-bundle":              "~2.3",
         "phpspec/phpspec":                      "~2.1",
         "phpunit/phpunit":                      "~4.1",

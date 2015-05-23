@@ -63,12 +63,17 @@ namespace :deploy do
     end
   end
 
+  task :migrate do
+    invoke 'symfony:console', 'doctrine:migrations:migrate', '--no-interaction', 'db'
+  end
+
   after   'npm:install',       'npm:prune'
   after   'npm:prune',         'node'
   before  'deploy:updated',    'deploy:set_permissions:acl'
 
   after   'deploy:updated',    'symfony:assetic:dump'
   after   'deploy:updated',    'symfony:assets:install'
+  after   'deploy:updated',    'migrate'
 
   after   'deploy:finishing',  'deploy:cleanup'
 
