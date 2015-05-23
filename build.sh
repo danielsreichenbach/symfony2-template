@@ -144,11 +144,20 @@ applicationBuild
 for sEnvironment in dev ; do
 	php ${DIR}/app/console cache:clear --env ${sEnvironment}
 	php ${DIR}/app/console cache:warmup --env ${sEnvironment}
-	php ${DIR}/app/console assets:install web  --symlink --relative --env ${sEnvironment}
+	php ${DIR}/app/console assets:install web --symlink --relative --env ${sEnvironment}
 done
 
+if [ "${sClean}" == "true" ]; then
+	for sEnvironment in dev ; do
+		php ${DIR}/app/console doctrine:database:drop --force --env ${sEnvironment}
+		php ${DIR}/app/console doctrine:database:create --env ${sEnvironment}
+		php ${DIR}/app/console doctrine:migrations:migrate -n --env ${sEnvironment}
+		php ${DIR}/app/console doctrine:fixtures:load -n --env ${sEnvironment}
+	done
+fi
+
 # --------------------------------------------------------------------------
-#  We have to ensure that those are writable for the server ...
+#  We have to ensure that those are writeable for the server ...
 # --------------------------------------------------------------------------
 for sPath in ${DIR}/app/cache/ ${DIR}/app/logs/ ; do
 	mkdir -p ${sPath}
