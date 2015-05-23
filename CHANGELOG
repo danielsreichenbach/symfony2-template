@@ -4,6 +4,7 @@ v 1.1.0 (unreleased)
   - added support for Doctrine migrations
   - added support for Doctrine fixtures in development mode
   - added support for Capistrano deployment workflow
+  - added support for OPcache bytecode cache clearing
 
 v 1.0.0 (unreleased)
   - project created

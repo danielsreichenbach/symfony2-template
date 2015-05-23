@@ -66,3 +66,13 @@ swiftmailer:
     username:  "%mailer.user%"
     password:  "%mailer.password%"
     spool:     { type: memory }
+
+# AppBundle configuration
+app:
+    maintenance:
+        opcache:
+            secret:     "%app.secret%"
+            host_ip:    127.0.0.1:80
+            host_name:  symfony2-template.dev
+            web_dir:    "%kernel.root_dir%/../web"
+            protocol:   http

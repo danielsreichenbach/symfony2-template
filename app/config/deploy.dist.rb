@@ -67,6 +67,10 @@ namespace :deploy do
     invoke 'symfony:console', 'doctrine:migrations:migrate', '--no-interaction', 'db'
   end
 
+  task :opcache_clear do
+    invoke 'symfony:console', 'app:cache:opcache:clear'
+  end
+
   after   'npm:install',       'npm:prune'
   after   'npm:prune',         'node'
   before  'deploy:updated',    'deploy:set_permissions:acl'
@@ -76,5 +80,6 @@ namespace :deploy do
   after   'deploy:updated',    'migrate'
 
   after   'deploy:finishing',  'deploy:cleanup'
+  after   'deploy:finished',   'opcache_clear'
 
 end

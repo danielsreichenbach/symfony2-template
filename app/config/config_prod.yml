@@ -25,3 +25,12 @@ monolog:
             level: debug
         console:
             type:  console
+
+# AppBundle configuration
+app:
+    maintenance:
+        opcache:
+            host_ip:    127.0.0.1:443
+            host_name:  symfony2-template.io
+            web_dir:    "%kernel.root_dir%/../web"
+            protocol:   https
