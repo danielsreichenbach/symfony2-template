@@ -149,10 +149,16 @@ done
 
 if [ "${sClean}" == "true" ]; then
 	for sEnvironment in dev ; do
+		migrationCount=`ls -1 ${DIR}/app/migrations/*.php | wc -l`
+		fixturesCount=`ls -1 ${DIR}/src/AppBundle/DataFixtures/ORM/*.php | wc -l`
 		php ${DIR}/app/console doctrine:database:drop --force --env ${sEnvironment}
 		php ${DIR}/app/console doctrine:database:create --env ${sEnvironment}
-		php ${DIR}/app/console doctrine:migrations:migrate -n --env ${sEnvironment}
-		php ${DIR}/app/console doctrine:fixtures:load -n --env ${sEnvironment}
+		if [[ ${migrationCount} > 0 ]]; then
+			php ${DIR}/app/console doctrine:migrations:migrate -n --env ${sEnvironment}
+		fi
+		if [[ ${fixturesCount} > 0 ]]; then
+			php ${DIR}/app/console doctrine:fixtures:load -n --env ${sEnvironment}
+		fi
 	done
 fi
 
