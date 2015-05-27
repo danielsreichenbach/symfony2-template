@@ -23,10 +23,10 @@ class AppExtension extends Extension
 
         foreach ($config as $sectionKey => $sectionValue) {
             foreach ($sectionValue as $nodeKey => $nodeValue) {
-                $container->setParameter($this->getAlias() . '.' . $sectionKey . '.' . $nodeKey, $nodeValue);
+                $container->setParameter($this->getAlias().'.'.$sectionKey.'.'.$nodeKey, $nodeValue);
                 foreach ($nodeValue as $subNodeKey => $subNodeValue) {
                     $container->setParameter(
-                        $this->getAlias() . '.' . $sectionKey . '.' . $nodeKey . '.' . $subNodeKey,
+                        $this->getAlias().'.'.$sectionKey.'.'.$nodeKey.'.'.$subNodeKey,
                         $subNodeValue
                     );
                 }

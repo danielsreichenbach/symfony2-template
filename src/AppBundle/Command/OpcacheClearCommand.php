@@ -9,7 +9,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * Provides means to invalidate the current OPcache state
  *
- * @package AppBundle\Command
+ * @author Daniel S. Reichenbach <daniel@kogitoapp.com>
  */
 class OpcacheClearCommand extends ContainerAwareCommand
 {
