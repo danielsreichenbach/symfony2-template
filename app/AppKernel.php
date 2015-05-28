@@ -3,8 +3,17 @@
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\HttpKernel\Kernel;
 
+/**
+ * Handles the loading of internal and external bundles for development
+ * and production mode of the application.
+ *
+ * @author Daniel S. Reichenbach <daniel@kogitoapp.com>
+ */
 class AppKernel extends Kernel
 {
+    /**
+     * {@inheritDoc}
+     */
     public function registerBundles()
     {
         $bundles = array(
@@ -34,6 +43,9 @@ class AppKernel extends Kernel
         return $bundles;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function registerContainerConfiguration(LoaderInterface $loader)
     {
         $loader->load($this->getRootDir().'/config/config_'.$this->getEnvironment().'.yml');

@@ -7,3 +7,9 @@ suites:
         psr4_prefix: AppBundle
         spec_path: src/AppBundle
         src_path: src/AppBundle
+
+    AppDomain:
+        namespace: AppDomain
+        psr4_prefix: AppDomain
+        spec_path: src/AppDomain
+        src_path: src/AppDomain

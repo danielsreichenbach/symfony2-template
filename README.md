@@ -1,4 +1,8 @@
-# Symfony2 LTS development template
+# Symfony Application Template
+
+The "Symfony Application Template" is a real world reference implementation
+to show how to solve common problems when developing Symfony applications
+following the [best bractices][003].
 
 Holy cow, what is this? Well, simply said: the default Symfony2 project
 created by Composer or the Symfony2 installer is lacking in several
@@ -43,11 +47,15 @@ To use the provided deployment and manage cron tabs on the deployment
 target hosts, we require Ruby/RubyGems support and the Bundler gem
 installed.
 
-[composer]:     http://getcomposer.org/
-[symfony]:      http://symfony.com/doc/2.7/book/installation.html
-[node]:         http://www.nodejs.org/
-[npm]:          http://www.npmjs.org/
-[ruby]:         http://www.ruby-lang.org/
-[rubygems]:     http://rubygems.org/
-[bundler]:      http://bundler.io/
-[mailcatcher]:  http://mailcatcher.me/
+[001]: http://getcomposer.org/
+[002]: http://symfony.com/doc/2.7/book/installation.html
+[003]: http://symfony.com/doc/2.7/best_practices/index.html
+[004]: http://symfony.com/doc/2.7/reference/requirements.html
+
+[050]: http://www.nodejs.org/
+[051]: http://www.npmjs.org/
+
+[100]: http://www.ruby-lang.org/
+[101]: http://rubygems.org/
+[102]: http://bundler.io/
+[103]: http://mailcatcher.me/
