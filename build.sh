@@ -17,6 +17,7 @@ sCapistrano=""
 
 sClean=false
 sInstall=false
+sDatabase=false
 
 # --------------------------------------------------------------------------
 # Source CLI helpers
@@ -35,6 +36,7 @@ function usage()
 	echo
 	echo "   -c, --clean           Removes local packages and generated files."
 	echo "   -i, --install     Install local packages and generate base files."
+	echo "   -d, --database      Create and populate the development database."
 	echo
 	echo "Example:"
 	echo "  " $(basename "${BASH_SOURCE[0]}") " -i"
@@ -116,6 +118,10 @@ case $i in
 	sInstall=true
 	shift
 	;;
+	-d|--database)
+	sDatabase=true
+	shift
+	;;
 	*)
 	usage
 	die_error "Unknown parameter specified"
@@ -147,7 +153,7 @@ for sEnvironment in dev ; do
 	php ${DIR}/app/console assets:install web --symlink --relative --env ${sEnvironment}
 done
 
-if [ "${sClean}" == "true" ]; then
+if [ "${sDatabase}" == "true" ]; then
 	for sEnvironment in dev ; do
 		migrationCount=`ls -1 ${DIR}/app/migrations/*.php | wc -l`
 		fixturesCount=`ls -1 ${DIR}/src/AppBundle/DataFixtures/ORM/*.php | wc -l`
@@ -159,10 +165,11 @@ if [ "${sClean}" == "true" ]; then
 		if [[ ${fixturesCount} > 0 ]]; then
 			php ${DIR}/app/console doctrine:fixtures:load -n --env ${sEnvironment}
 		fi
-		# ${DIR}/bin/phpcs --standard=${DIR}/vendor/escapestudios/symfony2-coding-standard/Symfony2 src
-		# ${DIR}/bin/phpcbf --standard=${DIR}/vendor/escapestudios/symfony2-coding-standard/Symfony2 src
 	done
 fi
+
+# ${DIR}/bin/phpcs --standard=${DIR}/vendor/escapestudios/symfony2-coding-standard/Symfony2 src
+# ${DIR}/bin/phpcbf --standard=${DIR}/vendor/escapestudios/symfony2-coding-standard/Symfony2 src
 
 # --------------------------------------------------------------------------
 #  We have to ensure that those are writeable for the server ...
