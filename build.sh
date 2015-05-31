@@ -159,7 +159,7 @@ if [ "${sClean}" == "true" ]; then
 		if [[ ${fixturesCount} > 0 ]]; then
 			php ${DIR}/app/console doctrine:fixtures:load -n --env ${sEnvironment}
 		fi
-                # ${DIR}/bin/phpcs --standard=${DIR}/vendor/escapestudios/symfony2-coding-standard/Symfony2 src
+		# ${DIR}/bin/phpcs --standard=${DIR}/vendor/escapestudios/symfony2-coding-standard/Symfony2 src
 		# ${DIR}/bin/phpcbf --standard=${DIR}/vendor/escapestudios/symfony2-coding-standard/Symfony2 src
 	done
 fi
