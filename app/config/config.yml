@@ -3,6 +3,7 @@ imports:
     - { resource: security.yml }
     - { resource: services.yml }
     - { resource: migrations.yml }
+    - { resource: fos.yml }
 
 framework:
     translator:      { fallbacks: ["%app.locale%"] }

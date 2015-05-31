@@ -1,5 +1,8 @@
 Please view this file on the master branch, on branches it may be out of date.
 
+v 1.4.0 (unreleased)
+  - added support for FOSUserBundle
+
 v 1.3.0 (unreleased)
   - fixed an issue with executing migrations / fixtures even if none existed
   - added support for fixing coding style to SF2 standards on builds
