@@ -6,6 +6,7 @@ v 1.4.0 (unreleased)
   - added FOSUserBundle event listener for useful events
   - added example for overriding FOSUserBundle messages
   - added application translation catalogue
+  - clarified the purpose of the user event listener
 
 v 1.3.0 (unreleased)
   - fixed an issue with executing migrations / fixtures even if none existed

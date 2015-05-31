@@ -9,7 +9,18 @@ use FOS\UserBundle\Event\FormEvent;
 use FOS\UserBundle\Event\FilterUserResponseEvent;
 
 /**
- * React to FOSUserBundle events and hook into interesting events
+ * This class allows you to hook into FOSUserBundle controllers as defined in the
+ * documentation.
+ *
+ * Common use cases for this are:
+ *
+ *   * triggering special handling when a user changes his password, and you require
+ *     access to the plaintext password.
+ *   * triggering a reaction when a user confirms his account, e.g. by sending a
+ *     welcome message, or assigning a user to a default group with standard roles
+ *     on completing the registration.
+ *
+ * See https://github.com/FriendsOfSymfony/FOSUserBundle/blob/master/Resources/doc/controller_events.md
  *
  * @author Daniel S. Reichenbach <daniel@kogitoapp.com>
  */
