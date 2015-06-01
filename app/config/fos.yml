@@ -1,9 +1,15 @@
 # UserBundle configuration
 fos_user:
-    db_driver:        orm
-    firewall_name:    default
-    user_class:       AppBundle\Entity\User
+    db_driver:          orm
+    firewall_name:      default
+    user_class:         AppBundle\Entity\User
     group:
-        group_class:  AppBundle\Entity\Group
+        group_class:    AppBundle\Entity\Group
     service:
-        mailer:       fos_user.mailer.twig_swift
+        mailer:         fos_user.mailer.default
+    from_email:
+        address:        "%app.mail.address%"
+        sender_name:    "%app.mail.sender_name%"
+    registration:
+        confirmation:
+            enabled:    true

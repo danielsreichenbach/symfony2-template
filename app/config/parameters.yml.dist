@@ -18,5 +18,8 @@ parameters:
     app.locale:                 en
     app.secret:                 290fa0ca5394f3ea4d9063fa4f4695de6beeb525
 
+    app.mail.address:           support@symfony2-template.dev
+    app.mail.sender_name:       Support Team
+
     # development settings
-    dev.mailer.delivery_to:     me@example.com
+    dev.mailer.delivery_to:     me@symfony2-template.dev
