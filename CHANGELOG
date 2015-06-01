@@ -8,6 +8,7 @@ v 1.4.0 (unreleased)
   - added application translation catalogue
   - clarified the purpose of the user event listener
   - added configurable application domain for command line use
+  - added support for respecting the authenticated users locale.
 
 v 1.3.0 (unreleased)
   - fixed an issue with executing migrations / fixtures even if none existed

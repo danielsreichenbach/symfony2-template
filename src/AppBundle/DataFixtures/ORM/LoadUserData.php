@@ -46,6 +46,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
         $administrator->setEnabled(true);
         $administrator->setRoles(array('ROLE_SUPER_ADMIN'));
         $administrator->setSuperAdmin(true);
+        $administrator->setLocale('en');
 
         $userManager->updateUser($administrator, true);
         $this->addReference('user-administrator', $administrator);
@@ -56,6 +57,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
         $defaultUser->setEmail('user@symfony2-template.io');
         $defaultUser->setPlainPassword('user');
         $defaultUser->setEnabled(true);
+        $defaultUser->setLocale('de');
 
         $userManager->updateUser($defaultUser, true);
         $this->addReference('user-default', $defaultUser);

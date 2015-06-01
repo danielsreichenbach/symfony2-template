@@ -9,3 +9,15 @@ services:
         arguments: [ '@doctrine.orm.entity_manager' ]
         tags:
             - { name: kernel.event_subscriber }
+
+    app.session.user.locale:
+        class: AppBundle\EventListener\UserLocaleListener
+        arguments: [ '@session' ]
+        tags:
+            - { name: kernel.event_listener, event: security.interactive_login, method: onInteractiveLogin }
+
+    app.request.locale:
+        class: AppBundle\EventListener\LocaleListener
+        arguments: ["%kernel.default_locale%"]
+        tags:
+            - { name: kernel.event_subscriber }

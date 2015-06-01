@@ -25,6 +25,13 @@ class User extends BaseUser
     protected $id;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="locale", type="string", length=2, nullable=false)
+     */
+    protected $locale;
+
+    /**
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Group")
      * @ORM\JoinTable(name="fos_users_groups",
      *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
@@ -39,6 +46,8 @@ class User extends BaseUser
     public function __construct()
     {
         parent::__construct();
+
+        $this->locale = 'en';
     }
 
     /**
@@ -49,5 +58,29 @@ class User extends BaseUser
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set the users locale
+     *
+     * @param string $locale
+     *
+     * @return User
+     */
+    public function setLocale($locale)
+    {
+        $this->locale = $locale;
+
+        return $this;
+    }
+
+    /**
+     * Get the users current locale
+     *
+     * @return string
+     */
+    public function getLocale()
+    {
+        return $this->locale;
     }
 }
