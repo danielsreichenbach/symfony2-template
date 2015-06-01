@@ -34,3 +34,6 @@ app:
             host_name:  symfony2-template.io
             web_dir:    "%kernel.root_dir%/../web"
             protocol:   https
+    request_context:
+        host:           symfony2-template.io
+        scheme:         https

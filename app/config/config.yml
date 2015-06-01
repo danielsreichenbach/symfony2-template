@@ -72,3 +72,6 @@ app:
             host_name:  symfony2-template.dev
             web_dir:    "%kernel.root_dir%/../web"
             protocol:   http
+    request_context:
+        host:           symfony2-template.dev
+        scheme:         http

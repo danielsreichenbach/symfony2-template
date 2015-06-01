@@ -2,6 +2,7 @@
 
 namespace AppBundle\DependencyInjection;
 
+use Symfony\Component\Config\Definition\Processor;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
@@ -18,19 +19,27 @@ class AppExtension extends Extension
      */
     public function load(array $configs, ContainerBuilder $container)
     {
+        $processor = new Processor();
         $configuration = new Configuration();
-        $config        = $this->processConfiguration($configuration, $configs);
+        $config = $processor->processConfiguration($configuration, $configs);
 
         foreach ($config as $sectionKey => $sectionValue) {
-            foreach ($sectionValue as $nodeKey => $nodeValue) {
-                $container->setParameter($this->getAlias().'.'.$sectionKey.'.'.$nodeKey, $nodeValue);
-                foreach ($nodeValue as $subNodeKey => $subNodeValue) {
-                    $container->setParameter(
-                        $this->getAlias().'.'.$sectionKey.'.'.$nodeKey.'.'.$subNodeKey,
-                        $subNodeValue
-                    );
+            $container->setParameter($this->getAlias().'.'.$sectionKey, $sectionValue);
+
+            if (is_array($sectionValue)) {
+                foreach ($sectionValue as $nodeKey => $nodeValue) {
+                    $container->setParameter($this->getAlias().'.'.$sectionKey.'.'.$nodeKey, $nodeValue);
+                    if (is_array($nodeValue)) {
+                        foreach ($nodeValue as $subNodeKey => $subNodeValue) {
+                            $container->setParameter(
+                                $this->getAlias().'.'.$sectionKey.'.'.$nodeKey.'.'.$subNodeKey,
+                                $subNodeValue
+                            );
+                        }
+                    }
                 }
             }
         }
     }
+
 }
