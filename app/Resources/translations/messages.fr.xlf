@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="fr" datatype="plaintext" original="file.ext">
+    <body>
+      <trans-unit id="26c73d338a6fa2703345859ca643f3f4" resname="app.homepage">
+        <source>app.homepage</source>
+        <target>Page d'accueil</target>
+      </trans-unit>
+      <trans-unit id="f0e89dc0f6f3257948adce7a5f0d1d46" resname="app.title">
+        <source>app.title</source>
+        <target>Bienvenue</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
