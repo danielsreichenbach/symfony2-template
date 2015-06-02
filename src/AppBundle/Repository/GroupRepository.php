@@ -11,4 +11,18 @@ use Doctrine\ORM\EntityRepository;
  */
 class GroupRepository extends EntityRepository
 {
+    /**
+     * Fetch and return a query builder for Group entity
+     *
+     * @return \Doctrine\ORM\QueryBuilder
+     */
+    private function getQueryBuilder()
+    {
+        $entityManager = $this->getEntityManager();
+
+        $queryBuilder = $entityManager->getRepository('AppBundle:Group')
+            ->createQueryBuilder('g');
+
+        return $queryBuilder;
+    }
 }

@@ -27,4 +27,19 @@ class UserRepository extends EntityRepository
             $amount
         );
     }
+
+    /**
+     * Fetch and return a query builder for User entity
+     *
+     * @return \Doctrine\ORM\QueryBuilder
+     */
+    private function getQueryBuilder()
+    {
+        $entityManager = $this->getEntityManager();
+
+        $queryBuilder = $entityManager->getRepository('AppBundle:User')
+            ->createQueryBuilder('u');
+
+        return $queryBuilder;
+    }
 }
