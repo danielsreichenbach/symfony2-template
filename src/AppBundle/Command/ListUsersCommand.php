@@ -94,10 +94,13 @@ class ListUsersCommand extends ContainerAwareCommand
      */
     private function sendReport($contents, $recipient)
     {
+        $mailerAddress = $this->getContainer()->getParameter('app.mail.address');
+        $mailerSenderName = $this->getContainer()->getParameter('app.mail.sender_name');
         $mailer = $this->getContainer()->get('mailer');
+
         $message = $mailer->createMessage()
             ->setSubject(sprintf('User report (%s)', date('Y-m-d H:i:s')))
-            ->setFrom(array('dev@symfony2-template.io' => 'App support team'))
+            ->setFrom(array($mailerAddress => $mailerSenderName))
             ->setTo($recipient)
             ->setBody($contents, 'text/plain');
         $mailer->send($message);
