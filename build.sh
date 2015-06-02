@@ -15,9 +15,9 @@ sComposer=""
 sNPM=""
 sCapistrano=""
 
-sClean=false
 sInstall=false
 sDatabase=false
+sTranslate=false
 
 # --------------------------------------------------------------------------
 # Source CLI helpers
@@ -34,9 +34,10 @@ function usage()
 	echo
 	echo "Prepares the build tree to present a clean environment.             "
 	echo
-	echo "   -c, --clean           Removes local packages and generated files."
 	echo "   -i, --install     Install local packages and generate base files."
 	echo "   -d, --database      Create and populate the development database."
+    echo "   -t; --translate                              Update translations."
+	echo "   -h, --help                                     Display this page."
 	echo
 	echo "Example:"
 	echo "  " $(basename "${BASH_SOURCE[0]}") " -i"
@@ -97,6 +98,11 @@ function applicationInstall ()
 function applicationBuild ()
 {
 	${DIR}/node_modules/.bin/grunt
+    for sEnvironment in dev ; do
+        php ${DIR}/app/console cache:clear --env ${sEnvironment}
+        php ${DIR}/app/console cache:warmup --env ${sEnvironment}
+        php ${DIR}/app/console assets:install web --symlink --relative --env ${sEnvironment}
+    done
 }
 
 # --------------------------------------------------------------------------
@@ -109,10 +115,10 @@ verifyRequirements
 # --------------------------------------------------------------------------
 for i in "$@"
 do
-case $i in
-	-c|--clean)
-	sClean=true
-	shift
+case ${i} in
+	-h|--help)
+	usage
+	exit 0
 	;;
 	-i|--install)
 	sInstall=true
@@ -120,6 +126,10 @@ case $i in
 	;;
 	-d|--database)
 	sDatabase=true
+	shift
+	;;
+	-t|--translate)
+	sTranslate=true
 	shift
 	;;
 	*)
@@ -134,11 +144,8 @@ done
 # --------------------------------------------------------------------------
 applicationOwner
 
-if [ "${sClean}" == "true" ]; then
-	applicationCleanup
-fi
-
 if [ "${sInstall}" == "true" ]; then
+	applicationCleanup
 	applicationInstall
 fi
 
@@ -147,12 +154,6 @@ applicationBuild
 # --------------------------------------------------------------------------
 # Prepare the development environment for a full run of the mill ...
 # --------------------------------------------------------------------------
-for sEnvironment in dev ; do
-	php ${DIR}/app/console cache:clear --env ${sEnvironment}
-	php ${DIR}/app/console cache:warmup --env ${sEnvironment}
-	php ${DIR}/app/console assets:install web --symlink --relative --env ${sEnvironment}
-done
-
 if [ "${sDatabase}" == "true" ]; then
 	for sEnvironment in dev ; do
 		migrationCount=`ls -1 ${DIR}/app/migrations/*.php | wc -l`
@@ -165,6 +166,12 @@ if [ "${sDatabase}" == "true" ]; then
 		if [[ ${fixturesCount} > 0 ]]; then
 			php ${DIR}/app/console doctrine:fixtures:load -n --env ${sEnvironment}
 		fi
+	done
+fi
+
+if [ "${sTranslate}" == "true" ]; then
+	for sLocale in en de fr ; do
+		php ${DIR}/app/console translation:update --no-backup --dump-messages --output-format=xlf --force ${sLocale}
 	done
 fi
 
