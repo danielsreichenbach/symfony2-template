@@ -2,6 +2,7 @@
 
 namespace AppBundle\Repository;
 
+use Doctrine\DBAL\Types\Type;
 use Doctrine\ORM\EntityRepository;
 
 /**
@@ -11,4 +12,19 @@ use Doctrine\ORM\EntityRepository;
  */
 class UserRepository extends EntityRepository
 {
+    /**
+     * Retrieve a limited list of enabled User entities.
+     *
+     * @param integer $amount
+     *
+     * @return array|\AppBundle\Entity\User[]
+     */
+    public function findEnabledUsers($amount = 50)
+    {
+        return $this->findBy(
+            array('enabled' => 1),
+            array('id' => 'DESC'),
+            $amount
+        );
+    }
 }
