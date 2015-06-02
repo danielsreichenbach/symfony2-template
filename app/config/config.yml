@@ -75,3 +75,5 @@ app:
     request_context:
         host:           symfony2-template.dev
         scheme:         http
+    users:
+        default_group:  "%app.users.default_group%"

@@ -3,6 +3,7 @@
 namespace AppBundle\EventListener;
 
 use Doctrine\ORM\EntityManager;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use FOS\UserBundle\FOSUserEvents;
 use FOS\UserBundle\Event\FormEvent;
@@ -31,13 +32,20 @@ class UserEventListener implements EventSubscriberInterface
     protected $entityManager;
 
     /**
+     * @var ContainerInterface
+     */
+    protected $container;
+
+    /**
      * Injecting the requirements
      *
-     * @param EntityManager $entityManager
+     * @param EntityManager      $entityManager
+     * @param ContainerInterface $containerInterface
      */
-    public function __construct(EntityManager $entityManager)
+    public function __construct(EntityManager $entityManager, ContainerInterface $containerInterface)
     {
         $this->entityManager = $entityManager;
+        $this->container = $containerInterface;
     }
 
     /**

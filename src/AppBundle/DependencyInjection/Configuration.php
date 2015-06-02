@@ -54,6 +54,15 @@ class Configuration implements ConfigurationInterface
                         ->end() // opcache
                     ->end()
                 ->end() // maintenance
+                ->arrayNode('users')
+                    ->addDefaultsIfNotSet()
+                    ->children()
+                        ->scalarNode('default_group')
+                            ->cannotBeEmpty()
+                            ->defaultValue('Users')
+                        ->end()
+                    ->end()
+                ->end()
                 ->arrayNode('request_context')
                     ->addDefaultsIfNotSet()
                     ->children()

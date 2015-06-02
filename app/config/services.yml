@@ -6,7 +6,7 @@ parameters:
 services:
     app.user.events:
         class: AppBundle\EventListener\UserEventListener
-        arguments: [ '@doctrine.orm.entity_manager' ]
+        arguments: [ '@doctrine.orm.entity_manager', '@service_container' ]
         tags:
             - { name: kernel.event_subscriber }
 
