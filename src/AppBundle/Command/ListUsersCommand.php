@@ -81,7 +81,7 @@ class ListUsersCommand extends ContainerAwareCommand
         // instead of displaying the table of users, store it in a variable
         $tableContents = $bufferedOutput->fetch();
         if (null !== $email = $input->getOption('send-to')) {
-            $this->sendReport($tableContents, $email);
+            $this->sendReport($users, $email);
         }
         $output->writeln($tableContents);
     }
@@ -89,20 +89,22 @@ class ListUsersCommand extends ContainerAwareCommand
     /**
      * Sends the given $contents to the $recipient email address.
      *
-     * @param string $contents
+     * @param array $data
      * @param string $recipient
      */
-    private function sendReport($contents, $recipient)
+    private function sendReport($data, $recipient)
     {
         $mailerAddress = $this->getContainer()->getParameter('app.mail.address');
         $mailerSenderName = $this->getContainer()->getParameter('app.mail.sender_name');
         $mailer = $this->getContainer()->get('mailer');
+        $renderer = $this->getContainer()->get('templating');
 
         $message = $mailer->createMessage()
             ->setSubject(sprintf('User report (%s)', date('Y-m-d H:i:s')))
             ->setFrom(array($mailerAddress => $mailerSenderName))
             ->setTo($recipient)
-            ->setBody($contents, 'text/plain');
+            ->setBody($renderer->render('Console/Users/list.html.twig', array('users' => $data)), 'text/html')
+            ->addPart($renderer->render('Console/Users/list.txt.twig', array('users' => $data)), 'text/plain');
         $mailer->send($message);
     }
 

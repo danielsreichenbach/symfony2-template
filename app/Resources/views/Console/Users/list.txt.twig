@@ -1,0 +1,11 @@
+# List of registered, active users
+The following user accounts are currently registered and confirmed.
+
+{% for user in users %}
+## {{ user.username }} (#{{ user.id }})
+{{ user.email }} has been confirmed with the following roles enabled:
+{% for role in user.roles %}
+  - {{ role }}
+{% endfor %}
+
+{% endfor %}
