@@ -10,6 +10,7 @@ v 1.4.0 (unreleased)
   - added configurable application domain for command line use
   - added support for respecting the authenticated users locale.
   - added FOSUserBundle view overrides
+  - added to command to list or mail registered users.
 
 v 1.3.0 (unreleased)
   - fixed an issue with executing migrations / fixtures even if none existed
