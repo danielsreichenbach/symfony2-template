@@ -56,7 +56,7 @@ class UserEventListener implements EventSubscriberInterface
     /**
      * React to a successful registration prior to encrypting the password
      *
-     * @param FilterUserResponseEvent $event
+     * @param FormEvent $event
      */
     public function onRegistrationSuccess(FormEvent $event)
     {
@@ -76,13 +76,18 @@ class UserEventListener implements EventSubscriberInterface
         /** @var \AppBundle\Entity\User $user */
         $user = $event->getUser();
 
-        // ... do something after a user is confirmed, e.g send a welcome message
+        $defaultGroup = $this->container->getParameter('app.users.default_group');
+
+        /** @var \AppBundle\Entity\Group $group */
+        $group = $this->entityManager->getRepository('AppBundle:Group')->findOneByName($defaultGroup);
+        $user->addGroup($group);
+        $this->entityManager->flush();
     }
 
     /**
      * React to a password update prior to encrypting the password
      *
-     * @param FilterUserResponseEvent $event
+     * @param FormEvent $event
      */
     public function onChangePasswordSuccess(FormEvent $event)
     {
@@ -95,7 +100,7 @@ class UserEventListener implements EventSubscriberInterface
     /**
      * React to a password reset prior to encrypting the password
      *
-     * @param FilterUserResponseEvent $event
+     * @param FormEvent $event
      */
     public function onResettingResetSuccess(FormEvent $event)
     {
