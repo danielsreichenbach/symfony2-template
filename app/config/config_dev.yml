@@ -43,6 +43,3 @@ monolog:
 
 assetic:
     use_controller: false
-
-swiftmailer:
-    delivery_address: "%dev.mailer.delivery_to%"

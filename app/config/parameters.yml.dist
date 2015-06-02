@@ -22,6 +22,3 @@ parameters:
     app.mail.sender_name:       Support Team
 
     app.users.default_group:    Users
-
-    # development settings
-    dev.mailer.delivery_to:     me@symfony2-template.dev
