@@ -15,6 +15,11 @@ use Symfony\Component\Console\Output\OutputInterface;
 class RemindConfirmationsCommand extends ContainerAwareCommand
 {
     /**
+     * @var ObjectManager
+     */
+    private $entityManager;
+
+    /**
      * Configure the command
      */
     protected function configure()
@@ -23,6 +28,15 @@ class RemindConfirmationsCommand extends ContainerAwareCommand
             ->setName('app:users:remind')
             ->setDescription('Send user confirmation emails')
             ->setHelp($this->getCommandHelp());
+    }
+
+    /**
+     * This method is executed before the the execute() method. It's main purpose
+     * is to initialize the variables used in the rest of the command methods.
+     */
+    protected function initialize(InputInterface $input, OutputInterface $output)
+    {
+        $this->entityManager = $this->getContainer()->get('doctrine')->getManager();
     }
 
     /**
@@ -37,10 +51,8 @@ class RemindConfirmationsCommand extends ContainerAwareCommand
         $context->setHost($this->getContainer()->getParameter('app.request_context.host'));
         $context->setScheme($this->getContainer()->getParameter('app.request_context.scheme'));
 
-        /**
-         * @var \FOS\UserBundle\Model\UserManagerInterface
-         */
-        $userManager = $this->getContainer()->get('fos_user.user_manager');
+        $users = $this->entityManager->getRepository('AppBundle:User')->findUnconfirmedUsers();
+        $usersReminded = 0;
 
         /**
          * @var \FOS\UserBundle\Mailer\MailerInterface
@@ -50,18 +62,10 @@ class RemindConfirmationsCommand extends ContainerAwareCommand
         $table = new Table($output);
         $table->setHeaders(array('ID', 'Email', 'Token'));
 
-        $allUsers = $userManager->findUsers();
-        $usersReminded = 0;
-
-        foreach ($allUsers as $user) {
-            /** @var \AppBundle\Entity\User $user */
-            $confirmationToken = $user->getConfirmationToken();
-
-            if (!empty($confirmationToken)) {
-                $table->addRow(array($user->getId(), $user->getEmailCanonical(), $user->getConfirmationToken()));
-                $fosMail->sendConfirmationEmailMessage($user);
-                $usersReminded++;
-            }
+        foreach ($users as $user /** @var \AppBundle\Entity\User $user */) {
+            $table->addRow(array($user->getId(), $user->getEmailCanonical(), $user->getConfirmationToken()));
+            $fosMail->sendConfirmationEmailMessage($user);
+            $usersReminded++;
         }
 
         if ($usersReminded > 0) {

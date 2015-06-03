@@ -29,6 +29,20 @@ class UserRepository extends EntityRepository
     }
 
     /**
+     * Retrieve a list of User entities pending confirmation
+     *
+     * @return array|\AppBundle\Entity\User[]
+     */
+    public function findUnconfirmedUsers()
+    {
+        $queryBuilder = $this->getQueryBuilder()
+        ->where('u.enabled = 0')
+        ->andWhere('u.confirmationToken IS NOT NULL');
+
+        return $queryBuilder->getQuery()->getResult();
+    }
+
+    /**
      * Fetch and return a query builder for User entity
      *
      * @return \Doctrine\ORM\QueryBuilder
