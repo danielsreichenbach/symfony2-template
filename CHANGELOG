@@ -17,6 +17,7 @@ v 1.4.0 (unreleased)
   - added support for adding confirmed users to a default group.
   - added support for rendering command mails via templating service.
   - added support for entity time stamps.
+  - added invitation codes as registration requirement.
 
 v 1.3.0 (unreleased)
   - fixed an issue with executing migrations / fixtures even if none existed

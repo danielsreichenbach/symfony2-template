@@ -13,3 +13,5 @@ fos_user:
     registration:
         confirmation:
             enabled:    true
+        form:
+            type:       app_user_registration

@@ -25,3 +25,17 @@ services:
     app.service.user:
         class: AppBundle\Service\UserManager
         arguments: [ '@doctrine.orm.entity_manager', '@service_container' ]
+
+    app.registration.form.type:
+        class: AppBundle\Form\Type\RegistrationFormType
+        arguments: [%fos_user.model.user.class%]
+        tags: [{ name: "form.type", alias: "app_user_registration" }]
+
+    app.invitation.form.type:
+        class: AppBundle\Form\Type\InvitationFormType
+        arguments: [@app.invitation.form.data_transformer]
+        tags: [{ name: "form.type", alias: "app_invitation_type" }]
+
+    app.invitation.form.data_transformer:
+        class: AppBundle\Form\DataTransformer\InvitationToCodeTransformer
+        arguments: [@doctrine.orm.entity_manager]

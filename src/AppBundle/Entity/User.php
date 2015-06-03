@@ -5,6 +5,7 @@ namespace AppBundle\Entity;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Defines the properties of the User entity to represent the application users.
@@ -56,6 +57,15 @@ class User extends BaseUser
      * )
      */
     protected $groups;
+
+    /**
+     * @var Invitation
+     *
+     * @ORM\OneToOne(targetEntity="Invitation", inversedBy="user")
+     * @ORM\JoinColumn(referencedColumnName="id")
+     * @Assert\NotNull(message="Your invitation is wrong", groups={"Registration"})
+     */
+    protected $invitation;
 
     /**
      * User under construction
@@ -115,5 +125,21 @@ class User extends BaseUser
     public function getUpdated()
     {
         return $this->updated;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getInvitation()
+    {
+        return $this->invitation;
+    }
+
+    /**
+     * @param mixed $invitation
+     */
+    public function setInvitation($invitation)
+    {
+        $this->invitation = $invitation;
     }
 }
