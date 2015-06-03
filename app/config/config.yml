@@ -2,7 +2,7 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
-    - { resource: migrations.yml }
+    - { resource: doctrine.yml }
     - { resource: fos.yml }
 
 framework:

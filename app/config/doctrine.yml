@@ -4,3 +4,9 @@ doctrine_migrations:
     namespace:  App\Migrations
     table_name: app_migrations
     name:       "Doctrine Migrations"
+
+# Doctrine Extensions Configuration
+stof_doctrine_extensions:
+  orm:
+    default:
+      timestampable: true
