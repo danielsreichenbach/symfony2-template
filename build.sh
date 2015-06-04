@@ -10,6 +10,7 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 TMP_FOLDER=${TMPDIR-/tmp}
 sWebUser=`ps aux | grep -E '[a]pache|[h]ttpd|[_]www|[w]ww-data' | grep -v root | head -1 | cut -d\  -f1`
+sDevUser=`whoami`
 
 sComposer=""
 sNPM=""
@@ -78,7 +79,7 @@ function verifyRequirements ()
 
 function applicationOwner ()
 {
-	sudo chown -R `whoami`.`whoami` ${DIR}/
+	sudo chown -R ${sDevUser} ${DIR}/
 }
 
 function applicationCleanup ()
@@ -185,10 +186,12 @@ for sPath in ${DIR}/app/cache/ ${DIR}/app/logs/ ; do
 	mkdir -p ${sPath}
 	chmod -R a+rwX  ${sPath}
 	setfacl -Rm g:${sWebUser}:rwX ${sPath}
+	setfacl -Rm g:${sDevUser}:rwX ${sPath}
 done
 
 for sEnvironment in dev ; do
 	touch ${DIR}/app/logs/${sEnvironment}.log
 	chmod a+rw ${DIR}/app/logs/${sEnvironment}.log
 	setfacl -m g:${sWebUser}:rw ${DIR}/app/logs/${sEnvironment}.log
+	setfacl -m g:${sDevUser}:rw ${DIR}/app/logs/${sEnvironment}.log
 done
