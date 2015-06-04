@@ -18,22 +18,23 @@ v 1.4.0 (unreleased)
   - added support for rendering command mails via templating service.
   - added support for entity time stamps.
   - added invitation codes as registration requirement.
+  - FOSUserBundle views comply with Symfony2 best practices.
 
-v 1.3.0 (unreleased)
+v 1.3.0 (05-31-2015)
   - fixed an issue with executing migrations / fixtures even if none existed
   - added support for fixing coding style to SF2 standards on builds
   - added missing MIT license file
 
-v 1.2.0 (unreleased)
+v 1.2.0 (05-23-2015)
   - added support for CommonMark markdown parsing
   - added support for UUID based Doctrine identifiers
   - rebuild the database, run migrations, and import fixtures in development mode
 
-v 1.1.0 (unreleased)
+v 1.1.0 (05-23-2015)
   - added support for Doctrine migrations
   - added support for Doctrine fixtures in development mode
   - added support for Capistrano deployment workflow
   - added support for OPcache bytecode cache clearing
 
-v 1.0.0 (unreleased)
+v 1.0.0 (05-22-2015)
   - project created

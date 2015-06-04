@@ -21,7 +21,7 @@ class RegistrationFormType extends BaseRegistrationFormType
         parent::buildForm($builder, $options);
 
         $builder
-            ->add('invitation', 'app_invitation_type', array('label' => 'Invitation code'));
+            ->add('invitation', 'app_invitation_type', array('label' => 'form.invitation', 'translation_domain' => 'FOSUserBundle'));
     }
 
     /**

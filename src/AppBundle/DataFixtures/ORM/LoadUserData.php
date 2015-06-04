@@ -66,6 +66,18 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
         $userManager->updateUser($defaultUser, true);
         $this->addReference('user-default', $defaultUser);
 
+        /** @var \AppBundle\Entity\User $frenchUser */
+        $frenchUser = $userManager->createUser();
+        $frenchUser->setUsername('user-french');
+        $frenchUser->setEmail('user-french@symfony2-template.io');
+        $frenchUser->setPlainPassword('test');
+        $frenchUser->setEnabled(true);
+        $frenchUser->setLocale('fr');
+        $frenchUser->setConfirmationToken($tokenGenerator->generateToken());
+
+        $userManager->updateUser($frenchUser, true);
+        $this->addReference('user-french', $frenchUser);
+
         /** @var \AppBundle\Entity\User $unconfirmedUser */
         $unconfirmedUser = $userManager->createUser();
         $unconfirmedUser->setUsername('user-unconfirmed');

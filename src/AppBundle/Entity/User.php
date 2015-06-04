@@ -63,7 +63,7 @@ class User extends BaseUser
      *
      * @ORM\OneToOne(targetEntity="Invitation", inversedBy="user")
      * @ORM\JoinColumn(referencedColumnName="id")
-     * @Assert\NotNull(message="Your invitation is wrong", groups={"Registration"})
+     * @Assert\NotNull(message="user.invitation.invalid", groups={"Registration"})
      */
     protected $invitation;
 

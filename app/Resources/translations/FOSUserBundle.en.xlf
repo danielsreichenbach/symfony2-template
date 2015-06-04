@@ -6,6 +6,30 @@
         <source>security.login.remember_me</source>
         <target>Keep me logged in</target>
       </trans-unit>
+      <trans-unit id="e07858f7111314133c6d9630eba3b27f" resname="layout.logged_in_as">
+        <source>layout.logged_in_as</source>
+        <target>Logged in as %username%</target>
+      </trans-unit>
+      <trans-unit id="8cb8613420d290c215803d3d560b33b6" resname="layout.logout">
+        <source>layout.logout</source>
+        <target>Logout</target>
+      </trans-unit>
+      <trans-unit id="af6ea03982f84cbc9acb9e0784f674fc" resname="layout.login">
+        <source>layout.login</source>
+        <target>Login</target>
+      </trans-unit>
+      <trans-unit id="6d17776939776ade666310c3af87423b" resname="layout.profile">
+        <source>layout.profile</source>
+        <target>Profile</target>
+      </trans-unit>
+      <trans-unit id="950b7e3bc163a2a51e0cc544c572563f" resname="layout.resetting">
+        <source>layout.resetting</source>
+        <target>Reset Password</target>
+      </trans-unit>
+      <trans-unit id="a33fc2f22ba4661e7b182682f530a2bd" resname="form.invitation">
+        <source>form.invitation</source>
+        <target>Invitation Code:</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

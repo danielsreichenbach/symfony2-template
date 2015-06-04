@@ -1,8 +1,10 @@
-{% extends "FOSUserBundle::layout.html.twig" %}
+{% extends "layout.html.twig" %}
 
 {% trans_default_domain 'FOSUserBundle' %}
+{% block bodyId %}login{% endblock %}
+{% block title %}{{ 'layout.login'|trans() }}{% endblock %}
 
-{% block fos_user_content %}
+{% block content %}
   {% if error %}
     <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
   {% endif %}
@@ -21,4 +23,4 @@
 
     <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}"/>
   </form>
-{% endblock fos_user_content %}
+{% endblock content %}

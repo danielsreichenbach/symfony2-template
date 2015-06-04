@@ -1,8 +1,9 @@
-{% extends "FOSUserBundle::layout.html.twig" %}
-{% trans_default_domain 'FOSUserBundle' %}
+{% extends "layout.html.twig" %}
 
-{% block fos_user_content %}
-  <p>
-    {{ 'resetting.check_email'|trans({'%email%': email}) }}
-  </p>
-{% endblock %}
+{% trans_default_domain 'FOSUserBundle' %}
+{% block bodyId %}resetting-check-email{% endblock %}
+{% block title %}{{ 'layout.resetting'|trans() }}{% endblock %}
+
+{% block content %}
+<p>{{ 'resetting.check_email'|trans({'%email%': email}) }}</p>
+{% endblock content %}

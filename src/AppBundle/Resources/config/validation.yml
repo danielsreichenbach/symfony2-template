@@ -1,0 +1,12 @@
+FOS\UserBundle\Model\User:
+    properties:
+        username:
+            - Length:
+                max: 32
+                maxMessage: fos_user.username.long
+                groups: [AppValidation]
+            - Regex:
+                pattern: /^[a-z0-9]+$/i
+                htmlPattern: ^[a-zA-Z0-9]+$
+                match:   true
+                message: fos_user.username.string

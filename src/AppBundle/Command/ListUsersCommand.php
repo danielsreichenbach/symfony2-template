@@ -27,8 +27,8 @@ class ListUsersCommand extends ContainerAwareCommand
     protected function configure()
     {
         $this
-            ->setName('app:list-users')
-            ->setDescription('Lists all the existing users')
+            ->setName('app:users:list')
+            ->setDescription('Lists all existing users')
             ->setHelp($this->getCommandHelp())
             ->addOption('max-results', null, InputOption::VALUE_OPTIONAL, 'Limits the number of users listed', 50)
             ->addOption(
