@@ -6,7 +6,7 @@ fos_user:
     group:
         group_class:    AppBundle\Entity\Group
     service:
-        mailer:         fos_user.mailer.default
+        mailer:         fos_user.mailer.twig_swift
     from_email:
         address:        "%app.mail.address%"
         sender_name:    "%app.mail.sender_name%"
