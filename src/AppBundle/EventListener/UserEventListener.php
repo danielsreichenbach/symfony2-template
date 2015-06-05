@@ -84,12 +84,10 @@ class UserEventListener implements EventSubscriberInterface
         /** @var \AppBundle\Entity\User $user */
         $user = $event->getUser();
 
-        $defaultGroup = $this->container->getParameter('app.users.default_group');
+        /** @var \AppBundle\Service\UserManager $userManager */
+        $userManager = $this->container->get('app.service.user');
 
-        /** @var \AppBundle\Entity\Group $group */
-        $group = $this->entityManager->getRepository('AppBundle:Group')->findOneByName($defaultGroup);
-        $user->addGroup($group);
-        $this->entityManager->flush();
+        $userManager->addUserTodefaultGroup($user);
     }
 
     /**

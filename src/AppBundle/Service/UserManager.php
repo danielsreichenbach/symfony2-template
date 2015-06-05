@@ -2,6 +2,7 @@
 
 namespace AppBundle\Service;
 
+use AppBundle\Entity\User;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -38,5 +39,22 @@ class UserManager
     {
         $this->entityManager = $entityManager;
         $this->container     = $containerInterface;
+    }
+
+    /**
+     * Adds the given user to the sites default group.
+     *
+     * @param User $user
+     */
+    public function addUserTodefaultGroup(User $user)
+    {
+        $defaultGroup = $this->container->getParameter('app.users.default_group');
+
+        /** @var \AppBundle\Repository\GroupRepository $groupRepository */
+        $groupRepository = $this->entityManager->getRepository('AppBundle:Group');
+        /** @var \AppBundle\Entity\Group $group */
+        $group = $groupRepository->findOneBy(array('name' => $defaultGroup));
+        $user->addGroup($group);
+        $this->entityManager->flush();
     }
 }
