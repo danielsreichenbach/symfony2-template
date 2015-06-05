@@ -58,6 +58,7 @@ class UserEventListener implements EventSubscriberInterface
             FOSUserEvents::REGISTRATION_CONFIRMED => 'onRegistrationConfirmed',
             FOSUserEvents::CHANGE_PASSWORD_SUCCESS => 'onChangePasswordSuccess',
             FOSUserEvents::RESETTING_RESET_SUCCESS => 'onResettingResetSuccess',
+            FOSUserEvents::RESETTING_RESET_COMPLETED => 'onResettingResetCompleted',
         );
     }
 
@@ -112,6 +113,19 @@ class UserEventListener implements EventSubscriberInterface
     {
         /** @var \AppBundle\Entity\User $user */
         $user = $event->getForm()->getData();
+
+        // ... do something which requires access to the unencrypted password
+    }
+
+    /**
+     * React to a completed password resets
+     *
+     * @param FilterUserResponseEvent $event
+     */
+    public function onResettingResetCompleted(FilterUserResponseEvent $event)
+    {
+        /** @var \AppBundle\Entity\User $user */
+        $user = $event->getUser();
 
         // ... do something which requires access to the unencrypted password
     }
