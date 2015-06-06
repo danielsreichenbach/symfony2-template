@@ -31,7 +31,7 @@ class Group extends BaseGroup
      * @Gedmo\Timestampable(on="create")
      * @ORM\Column(type="datetime")
      */
-    private $created;
+    protected $created;
 
     /**
      * @var \DateTime
@@ -39,7 +39,7 @@ class Group extends BaseGroup
      * @Gedmo\Timestampable(on="update")
      * @ORM\Column(type="datetime")
      */
-    private $updated;
+    protected $updated;
 
     /**
      * Returns the unique identifier for the Group entity
