@@ -39,3 +39,14 @@ services:
     app.invitation.form.data_transformer:
         class: AppBundle\Form\DataTransformer\InvitationToCodeTransformer
         arguments: [@doctrine.orm.entity_manager]
+
+    app.service.menu:
+        class: AppBundle\Menu\MenuBuilder
+        arguments: ['@knp_menu.factory', '@security.authorization_checker']
+
+    app.service.menu.user:
+        class: Knp\Menu\MenuItem
+        factory: [ "@app.service.menu", createUserMenu ]
+        arguments: ["@request_stack"]
+        tags:
+            - { name: knp_menu.menu, alias: user }

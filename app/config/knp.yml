@@ -1,0 +1,6 @@
+# KNP Menu configuration
+knp_menu:
+    twig:
+        template:     'AppBundle:Menu:knp_menu.html.twig'
+    templating:       false
+    default_renderer: twig

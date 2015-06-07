@@ -4,6 +4,7 @@ imports:
     - { resource: services.yml }
     - { resource: doctrine.yml }
     - { resource: fos.yml }
+    - { resource: knp.yml }
 
 framework:
     translator:      { fallbacks: ["%app.locale%"] }
