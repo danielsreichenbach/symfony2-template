@@ -28,7 +28,7 @@ set :branch,                   'master'
 
 # - Shared and per release file settings -------------------------------------
 set :linked_files,              fetch(:linked_files, []).push('app/config/parameters.yml')
-set :linked_dirs,               fetch(:linked_dirs, []).push('app/logs', 'app/sessions', 'node_modules', 'vendor')
+set :linked_dirs,               fetch(:linked_dirs, []).push('app/logs', 'app/sessions', 'app/Resources/assets/vendor', 'node_modules', 'vendor')
 
 # - Composer plugin settings -------------------------------------------------
 set :composer_install_flags, '--no-dev --no-interaction --optimize-autoloader'

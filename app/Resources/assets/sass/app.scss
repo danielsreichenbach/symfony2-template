@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+// -------------------------------------
+//   Configuration and browser reset
+// -------------------------------------
+$SourceSansProFontsPath: "../fonts";
+$fi-path: "../fonts";
+
+// -------------------------------------
+//   Vendor
+// -------------------------------------
+@import '../vendor/fontface-source-sans-pro/scss/source-sans-pro';
+@import '../vendor/foundation-icon-fonts/foundation-icons';
+@import '../vendor/foundation/scss/normalize';
+@import '../vendor/foundation/scss/foundation';
+@import '../vendor/animate-sass/animate';
+
+/*! Symfony2 Template | MIT License | http://symfony2-template.io */
+// -------------------------------------
+//   Foundation
+// -------------------------------------
+
+// -------------------------------------
+//   Components
+// -------------------------------------
+
+// -------------------------------------
+//   Structures
+// -------------------------------------

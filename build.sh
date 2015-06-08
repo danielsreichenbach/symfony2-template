@@ -37,7 +37,7 @@ function usage()
 	echo
 	echo "   -i, --install     Install local packages and generate base files."
 	echo "   -d, --database      Create and populate the development database."
-    echo "   -t; --translate                              Update translations."
+	echo "   -t; --translate                              Update translations."
 	echo "   -h, --help                                     Display this page."
 	echo
 	echo "Example:"
@@ -99,12 +99,14 @@ function applicationInstall ()
 
 function applicationBuild ()
 {
+	${DIR}/node_modules/.bin/bower install
+	${DIR}/node_modules/.bin/bower prune
 	${DIR}/node_modules/.bin/grunt
-    for sEnvironment in dev ; do
-        php ${DIR}/app/console cache:clear --env ${sEnvironment}
-        php ${DIR}/app/console cache:warmup --env ${sEnvironment}
-        php ${DIR}/app/console assets:install web --symlink --relative --env ${sEnvironment}
-    done
+	for sEnvironment in dev ; do
+		php ${DIR}/app/console cache:clear --env ${sEnvironment}
+		php ${DIR}/app/console cache:warmup --env ${sEnvironment}
+		php ${DIR}/app/console assets:install web --symlink --relative --env ${sEnvironment}
+	done
 }
 
 # --------------------------------------------------------------------------
