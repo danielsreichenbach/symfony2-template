@@ -19,6 +19,10 @@ module.exports = function (grunt) {
          */
         pkg: grunt.file.readJSON('package.json'),
         /**
+         * Get Bower configuration
+         */
+        bower: grunt.file.readJSON('./.bowerrc'),
+        /**
          * Set project object
          */
         project: {

@@ -1,0 +1,24 @@
+{
+    "name": "symfony2-lts-template",
+    "description": "The one true template to rule them all",
+    "license": "MIT",
+    "keywords": [
+        "build",
+        "template"
+    ],
+    "author": [
+        {
+            "name": "Daniel S. Reichenbach",
+            "email": "daniel@kogitoapp.com",
+            "homepage": "http://kogitoapp.com/"
+        }
+    ],
+    "homepage": "http://kogitoapp.com/",
+    "dependencies": {
+        "foundation": "~5.5.2",
+        "foundation-icon-fonts": "*",
+        "animate-sass": "~0.6.4",
+        "fontface-source-sans-pro": "*"
+    },
+    "private": true
+}
