@@ -58,6 +58,8 @@ namespace :deploy do
   task :node do
     on roles(:web), in: :groups, limit: 3, wait: 5 do
       within release_path do
+        execute :bower, "install"
+        execute :bower, "prune"
         execute :grunt
       end
     end

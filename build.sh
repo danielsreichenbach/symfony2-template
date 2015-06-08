@@ -93,6 +93,7 @@ function applicationCleanup ()
 function applicationInstall ()
 {
 	${sNPM} install
+	${DIR}/node_modules/.bin/bower install
 	${sComposer} install
 }
 

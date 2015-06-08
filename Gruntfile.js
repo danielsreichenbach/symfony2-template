@@ -52,7 +52,27 @@ module.exports = function (grunt) {
             },
             vendor: {
                 src: [
-                    '<%= project.assets %>/js/vendor/*.js'
+                    '<%= bower.directory %>/jquery/dist/jquery.js',
+                    '<%= bower.directory %>/modernizr/modernizr.js',
+                    '<%= bower.directory %>/fastclick/lib/fastclick.js',
+                    '<%= bower.directory %>/jquery.cookie/jquery.cookie.js',
+                    '<%= bower.directory %>/jquery-placeholder/jquery.placeholder.js',
+                    '<%= bower.directory %>/foundation/js/foundation/foundation.js',
+                    '<%= bower.directory %>/foundation/js/foundation/foundation.abide.js',
+                    '<%= bower.directory %>/foundation/js/foundation/foundation.accordion.js',
+                    '<%= bower.directory %>/foundation/js/foundation/foundation.alert.js',
+                    '<%= bower.directory %>/foundation/js/foundation/foundation.clearing.js',
+                    '<%= bower.directory %>/foundation/js/foundation/foundation.dropdown.js',
+                    '<%= bower.directory %>/foundation/js/foundation/foundation.interchange.js',
+                    '<%= bower.directory %>/foundation/js/foundation/foundation.joyride.js',
+                    '<%= bower.directory %>/foundation/js/foundation/foundation.magellan.js',
+                    '<%= bower.directory %>/foundation/js/foundation/foundation.offcanvas.js',
+                    '<%= bower.directory %>/foundation/js/foundation/foundation.orbit.js',
+                    '<%= bower.directory %>/foundation/js/foundation/foundation.reveal.js',
+                    '<%= bower.directory %>/foundation/js/foundation/foundation.slider.js',
+                    '<%= bower.directory %>/foundation/js/foundation/foundation.tab.js',
+                    '<%= bower.directory %>/foundation/js/foundation/foundation.tooltip.js',
+                    '<%= bower.directory %>/foundation/js/foundation/foundation.topbar.js'
                 ],
                 dest: '<%= project.js %>/vendor.js',
                 nonull: true
@@ -146,7 +166,6 @@ module.exports = function (grunt) {
          watch: {
             scripts: {
                 files: [
-                    '<%= project.assets %>/js/vendor/*.js',
                     '<%= project.assets %>/js/app.*.js'
                 ],
                 tasks: ['concat']
