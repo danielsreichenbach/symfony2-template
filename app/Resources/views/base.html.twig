@@ -10,15 +10,23 @@
 
   <title>{% block title %}{{ 'app.title'|trans }}{% endblock %}</title>
 
-{% block metadata %}{% endblock metadata %}
+{% block metadata %}
+  <!-- site metadata following -->
+{% endblock metadata %}
 
   <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
   <link rel="shortcut icon" href="{{ asset('favicon.png') }}">
 
-{% block stylesheets %}{% endblock %}
+{% block stylesheets %}
+  <!-- style sheets following -->
+{% endblock %}
 </head>
 <body id="{% block bodyId %}index{% endblock bodyId %}" class="{% block bodyClass %}index{% endblock bodyClass %}">
-{% block body %}{% endblock body %}
-{% block javascripts %}{% endblock javascripts %}
+{% block body %}
+  <!-- body -->
+{% endblock body %}
+{% block javascripts %}
+  <!-- scripts following -->
+{% endblock javascripts %}
 </body>
 </html>
