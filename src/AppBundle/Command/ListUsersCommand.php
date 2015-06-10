@@ -100,8 +100,8 @@ class ListUsersCommand extends ContainerAwareCommand
             ->setSubject(sprintf('User report (%s)', date('Y-m-d H:i:s')))
             ->setFrom(array($mailerAddress => $mailerSenderName))
             ->setTo($recipient)
-            ->setBody($renderer->render('Console/Users/list.html.twig', array('users' => $data)), 'text/html')
-            ->addPart($renderer->render('Console/Users/list.txt.twig', array('users' => $data)), 'text/plain');
+            ->setBody($renderer->render('commands/list/users.html.twig', array('users' => $data)), 'text/html')
+            ->addPart($renderer->render('commands/list/users.txt.twig', array('users' => $data)), 'text/plain');
         $mailer->send($message);
     }
 
