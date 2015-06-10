@@ -1,0 +1,6 @@
+  <!-- style sheets following -->
+{% if app.environment == 'dev' %}
+  <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+{% else %}
+  <link rel="stylesheet" href="{{ asset('css/app.min.css') }}">
+{% endif %}

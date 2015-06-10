@@ -5,7 +5,7 @@
 {% block title %}{{ 'layout.profile'|trans() }}{% endblock %}
 
 {% block content %}
-{{ form_start(form, {'action': path('fos_user_profile_edit'), 'method': 'POST', 'attr': {'class': 'fos_user_profile_edit'}}) }}
+{{ form_start(form, {'action': path('fos_user_profile_edit'), 'method': 'POST', 'attr': {'class': 'fos_user_profile_edit', 'data-abide': null}}) }}
   <div class="username-field">
     {{ form_label(form.username) }}
     {{ form_widget(form.username) }}
@@ -25,7 +25,7 @@
   </div>
 
   <div class="submit-action">
-    <input type="submit" value="{{ 'profile.edit.submit'|trans }}"/>
+    <input class="button radius" type="submit" value="{{ 'profile.edit.submit'|trans }}"/>
   </div>
 {{ form_end(form) }}
 {% endblock content %}

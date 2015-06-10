@@ -9,7 +9,3 @@
 if ( $.fn.foundation ) {
     console.log('ZURB foundation is here to stay.');
 }
-
-if ( $.fn.waypoint ) {
-    console.log('jQuery Waypoint support is active.');
-}

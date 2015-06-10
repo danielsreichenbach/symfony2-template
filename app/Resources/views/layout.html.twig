@@ -1,18 +1,20 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+{% include 'partials/stylesheets.html.twig' %}
+{% endblock stylesheets %}
+
 {% block body %}
   <div>
 {{ knp_menu_render('user') }}
   </div>
 
-  {% if app.request.hasPreviousSession %}
-    {% for type, messages in app.session.flashbag.all() %}
-      {% for message in messages %}
-        <div class="flash-{{ type }}">
-          {{ message }}
-        </div>
-      {% endfor %}
-    {% endfor %}
-  {% endif %}
+{% include 'partials/messages.html.twig' %}
 {% block content %}{% endblock content %}
 {% endblock body %}
+
+{% block javascripts %}
+{% include 'partials/javascripts.html.twig' %}
+{% include 'partials/javascripts-ie.html.twig' %}
+{% include 'partials/javascripts-finalize.html.twig' %}
+{% endblock javascripts %}
