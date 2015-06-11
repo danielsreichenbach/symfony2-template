@@ -3,6 +3,8 @@
 
 /* THANKS */
     Symfony project <http://symfony.com/>
+    Zurb Foundation <http://foundation.zurb.com/>
+    Zurk Ink <http://zurb.com/ink>
 
 /* SITE */
     Standards: HTML5, CSS3
