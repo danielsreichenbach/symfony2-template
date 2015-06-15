@@ -25,7 +25,6 @@
 /app/logs/*
 
 # Generated files, vendor libraries
-/bin/
 /node_modules/
 /vendor/*
 /web/bundles/

@@ -23,7 +23,7 @@ sTranslate=false
 # --------------------------------------------------------------------------
 # Source CLI helpers
 # --------------------------------------------------------------------------
-. ./libui.sh
+. ${DIR}/libui.sh
 libui_sh_init "cli"
 
 # --------------------------------------------------------------------------
@@ -79,33 +79,33 @@ function verifyRequirements ()
 
 function applicationOwner ()
 {
-	sudo chown -R ${sDevUser} ${DIR}/
+	sudo chown -R ${sDevUser} ${DIR}/../
 }
 
 function applicationCleanup ()
 {
-	declare -a GENERATED_DIRECTORIES=("app/cache/" "app/logs/" "bin/" "vendor/" "web/bundles/" "node_modules")
+	declare -a GENERATED_DIRECTORIES=("app/cache/" "app/logs/" "vendor/" "web/bundles/" "node_modules")
 	for sPath in ${GENERATED_DIRECTORIES[@]} ; do
-		rm -rf ${DIR}/${sPath}
+		rm -rf ${DIR}/../${sPath}
 	done
 }
 
 function applicationInstall ()
 {
-	${sNPM} install
-	${DIR}/node_modules/.bin/bower install
+	${sNPM} install ${DIR}/../
+	${DIR}/../node_modules/.bin/bower install
 	${sComposer} install
 }
 
 function applicationBuild ()
 {
-	${DIR}/node_modules/.bin/bower install
-	${DIR}/node_modules/.bin/bower prune
-	${DIR}/node_modules/.bin/grunt
+	${DIR}/../node_modules/.bin/bower install
+	${DIR}/../node_modules/.bin/bower prune
+	${DIR}/../node_modules/.bin/grunt
 	for sEnvironment in dev ; do
-		php ${DIR}/app/console cache:clear --env ${sEnvironment}
-		php ${DIR}/app/console cache:warmup --env ${sEnvironment}
-		php ${DIR}/app/console assets:install web --symlink --relative --env ${sEnvironment}
+		php ${DIR}/../app/console cache:clear --env ${sEnvironment}
+		php ${DIR}/../app/console cache:warmup --env ${sEnvironment}
+		php ${DIR}/../app/console assets:install web --symlink --relative --env ${sEnvironment}
 	done
 }
 
@@ -160,32 +160,34 @@ applicationBuild
 # --------------------------------------------------------------------------
 if [ "${sDatabase}" == "true" ]; then
 	for sEnvironment in dev ; do
-		migrationCount=`ls -1 ${DIR}/app/migrations/*.php | wc -l`
-		fixturesCount=`ls -1 ${DIR}/src/AppBundle/DataFixtures/ORM/*.php | wc -l`
-		php ${DIR}/app/console doctrine:database:drop --force --env ${sEnvironment}
-		php ${DIR}/app/console doctrine:database:create --env ${sEnvironment}
+		migrationCount=`ls -1 ${DIR}/../app/migrations/*.php | wc -l`
+		fixturesCount=`ls -1 ${DIR}/../src/AppBundle/DataFixtures/ORM/*.php | wc -l`
+		php ${DIR}/../app/console doctrine:database:drop --force --env ${sEnvironment}
+		php ${DIR}/../app/console doctrine:database:create --env ${sEnvironment}
 		if [[ ${migrationCount} > 0 ]]; then
-			php ${DIR}/app/console doctrine:migrations:migrate -n --env ${sEnvironment}
+			php ${DIR}/../app/console doctrine:migrations:migrate -n --env ${sEnvironment}
+		else
+			php ${DIR}/../app/console doctrine:schema:update -n --force --env ${sEnvironment}
 		fi
 		if [[ ${fixturesCount} > 0 ]]; then
-			php ${DIR}/app/console doctrine:fixtures:load -n --env ${sEnvironment}
+			php ${DIR}/../app/console doctrine:fixtures:load -n --env ${sEnvironment}
 		fi
 	done
 fi
 
 if [ "${sTranslate}" == "true" ]; then
 	for sLocale in en de fr ; do
-		php ${DIR}/app/console translation:update --no-backup --dump-messages --output-format=xlf --force ${sLocale}
+		php ${DIR}/../app/console translation:update --no-backup --dump-messages --output-format=xlf --force ${sLocale}
 	done
 fi
 
-# ${DIR}/bin/phpcs --standard=${DIR}/vendor/escapestudios/symfony2-coding-standard/Symfony2 src
-# ${DIR}/bin/phpcbf --standard=${DIR}/vendor/escapestudios/symfony2-coding-standard/Symfony2 src
+# ${DIR}/../vendor/bin/phpcs --standard=${DIR}/../vendor/escapestudios/symfony2-coding-standard/Symfony2 src
+# ${DIR}/../vendor/bin/phpcbf --standard=${DIR}/../vendor/escapestudios/symfony2-coding-standard/Symfony2 src
 
 # --------------------------------------------------------------------------
 #  We have to ensure that those are writeable for the server ...
 # --------------------------------------------------------------------------
-for sPath in ${DIR}/app/cache/ ${DIR}/app/logs/ ; do
+for sPath in ${DIR}/../app/cache/ ${DIR}/../app/logs/ ; do
 	mkdir -p ${sPath}
 	chmod -R a+rwX  ${sPath}
 	setfacl -Rm g:${sWebUser}:rwX ${sPath}
@@ -193,8 +195,8 @@ for sPath in ${DIR}/app/cache/ ${DIR}/app/logs/ ; do
 done
 
 for sEnvironment in dev ; do
-	touch ${DIR}/app/logs/${sEnvironment}.log
-	chmod a+rw ${DIR}/app/logs/${sEnvironment}.log
-	setfacl -m g:${sWebUser}:rw ${DIR}/app/logs/${sEnvironment}.log
-	setfacl -m g:${sDevUser}:rw ${DIR}/app/logs/${sEnvironment}.log
+	touch ${DIR}/../app/logs/${sEnvironment}.log
+	chmod a+rw ${DIR}/../app/logs/${sEnvironment}.log
+	setfacl -m g:${sWebUser}:rw ${DIR}/../app/logs/${sEnvironment}.log
+	setfacl -m g:${sDevUser}:rw ${DIR}/../app/logs/${sEnvironment}.log
 done

@@ -43,11 +43,11 @@
         "league/commonmark":                        "@stable"
     },
     "require-dev": {
-        "doctrine/doctrine-fixtures-bundle":        "~2.2",
         "sensio/generator-bundle":                  "~2.3",
+        "doctrine/doctrine-fixtures-bundle":        "~2.2",
         "phpspec/phpspec":                          "~2.1",
-        "phpunit/phpunit":                          "~4.1",
-        "escapestudios/symfony2-coding-standard":   "~2.0"
+        "phpunit/phpunit":                          "~4",
+        "escapestudios/symfony2-coding-standard":   "~2"
     },
     "suggest": {
         "ext-xdebug":                               ">=2.2.1"
@@ -57,9 +57,6 @@
             "": "src/",
             "SymfonyStandard\\": "app/SymfonyStandard/"
         }
-    },
-    "config": {
-        "bin-dir": "bin"
     },
     "scripts": {
         "post-root-package-install": [
