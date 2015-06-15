@@ -70,9 +70,9 @@ function verifyRequirements ()
 		die_error "Capistrano is not installed or not within PATH"
 	fi
 
-	if ! [ -d ${DIR}/node_modules/ ] ; then
+	if ! [ -d ${DIR}/../node_modules/ ] ; then
 		sInstall=true
-	elif ! [ -d ${DIR}/vendor/ ] ; then
+	elif ! [ -d ${DIR}/../vendor/ ] ; then
 		sInstall=true
 	fi
 }
