@@ -72,6 +72,8 @@ function verifyRequirements ()
 
 	if ! [ -d ${DIR}/../node_modules/ ] ; then
 		sInstall=true
+	elif ! [ -d ${DIR}/../app/Resources/assets/vendor/ ] ; then
+		sInstall=true
 	elif ! [ -d ${DIR}/../vendor/ ] ; then
 		sInstall=true
 	fi

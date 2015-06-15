@@ -1,8 +1,6 @@
 # config valid only for current version of Capistrano
 lock '3.4.0'
 
-set :repo_url, 'git@scratch.kogitoapp.com:danielsreichenbach/symfony-lts-template.git'
-
 # - Generic deployment settings ----------------------------------------------
 set :application,              'symfony2-template'
 set :deploy_to,                '/var/www/symfony2-template.io'
@@ -22,20 +20,20 @@ set :default_env, {
 }
 
 # - Git settings -------------------------------------------------------------
-set :repo_url,                 'git@scratch.kogitoapp.com:wowstack/io-sphere.git'
+set :repo_url,                 'git@scratch.kogitoapp.com:danielsreichenbach/symfony-lts-template.git'
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
 set :branch,                   'master'
 
 # - Shared and per release file settings -------------------------------------
 set :linked_files,              fetch(:linked_files, []).push('app/config/parameters.yml')
-set :linked_dirs,               fetch(:linked_dirs, []).push('app/logs', 'app/sessions', 'app/Resources/assets/vendor', 'node_modules', 'vendor')
+set :linked_dirs,               fetch(:linked_dirs, []).push('app/logs', 'app/Resources/assets/vendor', 'node_modules', 'vendor')
 
 # - Composer plugin settings -------------------------------------------------
 set :composer_install_flags, '--no-dev --no-interaction --optimize-autoloader'
 SSHKit.config.command_map[:composer] = "php #{shared_path.join("composer.phar")}"
 
 # - File permissions plugin settings -----------------------------------------
-set :file_permissions_paths,   fetch(:file_permissions_paths, []).push('app/cache', 'app/logs', 'app/sessions')
+set :file_permissions_paths,   fetch(:file_permissions_paths, []).push('app/cache', 'app/logs')
 set :file_permissions_users,   fetch(:file_permissions_users, []).push('www-data')
 
 set :permission_method,        :acl
