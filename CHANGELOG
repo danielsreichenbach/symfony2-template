@@ -1,6 +1,6 @@
 Please view this file on the master branch, on branches it may be out of date.
 
-v 1.5.0 (unreleased)
+v 1.5.0 (06-15-2015)
   - added proper view templates
   - added KnpMenu Bundle and menu services
   - added support for handling assets via bower
