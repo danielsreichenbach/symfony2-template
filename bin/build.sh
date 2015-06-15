@@ -179,7 +179,7 @@ fi
 
 if [ "${sTranslate}" == "true" ]; then
 	for sLocale in en de fr ; do
-		php ${DIR}/../app/console translation:update --no-backup --dump-messages --output-format=xlf --force ${sLocale}
+		php ${DIR}/../app/console translation:update --no-backup --dump-messages --output-format=xlf --force ${sLocale} app
 	done
 fi
 
