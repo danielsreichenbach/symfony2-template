@@ -31,7 +31,7 @@
 # http://capistranorb.com/documentation/getting-started/configuration/
 # Feel free to add new variables to customise your setup.
 
-
+set :deploy_to,                '/var/www/symfony2-template.io'
 
 # Custom SSH Options
 # ==================
