@@ -2,7 +2,7 @@
 
 The "Symfony Application Template" is a real world reference implementation
 to show how to solve common problems when developing Symfony2 applications
-following the [best bractices][003].
+following the [best practices][003].
 
 Holy cow, what is this? Well, simply said: the default Symfony2 project
 created by Composer or the Symfony2 installer is lacking in several
