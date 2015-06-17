@@ -19,7 +19,7 @@ set :default_env, {
 }
 
 # - Git settings -------------------------------------------------------------
-set :repo_url,                 'git@scratch.kogitoapp.com:danielsreichenbach/symfony-lts-template.git'
+set :repo_url,                 'https://github.com/danielsreichenbach/symfony2-template.git'
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
 set :branch,                   'master'
 

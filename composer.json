@@ -14,8 +14,8 @@
     ],
     "support": {
         "email": "daniel@kogitoapp.com",
-        "issues": "https://scratch.kogitoapp.com/danielsreichenbach/symfony-lts-template/issues",
-        "source": "https://scratch.kogitoapp.com/danielsreichenbach/symfony-lts-template"
+        "issues": "https://github.com/danielsreichenbach/symfony2-template/issues",
+        "source": "https://github.com/danielsreichenbach/symfony2-template"
     },
     "require": {
         "php":                                      ">=5.4.5",
