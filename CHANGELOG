@@ -13,17 +13,17 @@ v 1.4.0 (06-05-2015)
   - added application translation catalogue
   - clarified the purpose of the user event listener
   - added configurable application domain for command line use
-  - added support for respecting the authenticated users locale.
+  - added support for respecting the authenticated users locale
   - added FOSUserBundle view overrides
-  - added command to list or mail registered users.
-  - added command to send registration confirmation reminders.
-  - added fixture for testing unconfirmed users.
-  - added french translation catalogues.
-  - added support for adding confirmed users to a default group.
-  - added support for rendering command mails via templating service.
-  - added support for entity time stamps.
-  - added invitation codes as registration requirement.
-  - FOSUserBundle views comply with Symfony2 best practices.
+  - added command to list or mail registered users
+  - added command to send registration confirmation reminders
+  - added fixture for testing unconfirmed users
+  - added French translation catalogues
+  - added support for adding confirmed users to a default group
+  - added support for rendering command mails via template service
+  - added support for entity time stamps
+  - added invitation codes as registration requirement
+  - FOSUserBundle views comply with Symfony2 best practices
 
 v 1.3.0 (05-31-2015)
   - fixed an issue with executing migrations / fixtures even if none existed
@@ -38,8 +38,8 @@ v 1.2.0 (05-23-2015)
 v 1.1.0 (05-23-2015)
   - added support for Doctrine migrations
   - added support for Doctrine fixtures in development mode
-  - added support for Capistrano deployment workflow
-  - added support for OPcache bytecode cache clearing
+  - added support for Capistrano deployment work-flow
+  - added support for OPcache byte-code cache clearing
 
 v 1.0.0 (05-22-2015)
   - project created
