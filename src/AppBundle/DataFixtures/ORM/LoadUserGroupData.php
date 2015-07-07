@@ -49,6 +49,8 @@ class LoadUserGroupData extends AbstractFixture implements OrderedFixtureInterfa
         $defaultUser    = $this->getReference('user-default');
         /** @var \AppBundle\Entity\User $frenchUser */
         $frenchUser     = $this->getReference('user-french');
+        /** @var \AppBundle\Entity\User $germanUser */
+        $germanUser     = $this->getReference('user-german');
 
         $administrator->addGroup($groupAdmins);
         $userManager->updateUser($administrator, true);
@@ -58,6 +60,9 @@ class LoadUserGroupData extends AbstractFixture implements OrderedFixtureInterfa
 
         $frenchUser->addGroup($groupUsers);
         $userManager->updateUser($frenchUser, true);
+
+        $germanUser->addGroup($groupUsers);
+        $userManager->updateUser($germanUser, true);
 
         $manager->flush();
     }

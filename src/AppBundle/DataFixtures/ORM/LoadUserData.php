@@ -61,7 +61,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
         $defaultUser->setEmail('user@symfony2-template.io');
         $defaultUser->setPlainPassword('test');
         $defaultUser->setEnabled(true);
-        $defaultUser->setLocale('de');
+        $defaultUser->setLocale('en');
 
         $userManager->updateUser($defaultUser, true);
         $this->addReference('user-default', $defaultUser);
@@ -77,6 +77,18 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
 
         $userManager->updateUser($frenchUser, true);
         $this->addReference('user-french', $frenchUser);
+
+        /** @var \AppBundle\Entity\User $germanUser */
+        $germanUser = $userManager->createUser();
+        $germanUser->setUsername('user-german');
+        $germanUser->setEmail('user-german@symfony2-template.io');
+        $germanUser->setPlainPassword('test');
+        $germanUser->setEnabled(true);
+        $germanUser->setLocale('de');
+        $germanUser->setConfirmationToken($tokenGenerator->generateToken());
+
+        $userManager->updateUser($germanUser, true);
+        $this->addReference('user-german', $germanUser);
 
         /** @var \AppBundle\Entity\User $unconfirmedUser */
         $unconfirmedUser = $userManager->createUser();
