@@ -107,14 +107,19 @@ class ListUsersCommand extends ContainerAwareCommand
         $mailerAddress = $this->getContainer()->getParameter('app.mail.address');
         $mailerSenderName = $this->getContainer()->getParameter('app.mail.sender_name');
         $mailer = $this->getContainer()->get('mailer');
-        $renderer = $this->getContainer()->get('templating');
+        $templating = $this->getContainer()->get('templating');
+
+        $renderedTemplate = $templating->render('commands/list/users.txt.twig', array('users' => $data, 'date' => date('Y-m-d H:i')));
+        // Render the email, use the first line as the subject, and the rest as the body
+        $renderedLines = explode("\n", trim($renderedTemplate));
+        $subject = $renderedLines[0];
+        $body = implode("\n", array_slice($renderedLines, 1));
 
         $message = $mailer->createMessage()
-            ->setSubject(sprintf('User report (%s)', date('Y-m-d H:i:s')))
+            ->setSubject($subject)
             ->setFrom(array($mailerAddress => $mailerSenderName))
             ->setTo($recipient)
-            ->setBody($renderer->render('commands/list/users.html.twig', array('users' => $data)), 'text/html')
-            ->addPart($renderer->render('commands/list/users.txt.twig', array('users' => $data)), 'text/plain');
+            ->setBody($body);
         $mailer->send($message);
     }
 

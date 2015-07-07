@@ -10,6 +10,51 @@
         <source>app.homepage</source>
         <target>Page d'accueil</target>
       </trans-unit>
+      <trans-unit id="90997929bcfdafefc75086643afea54d" resname="registration.email.subject">
+        <source>registration.email.subject</source>
+        <target>Bienvenue %username% !</target>
+      </trans-unit>
+      <trans-unit id="9671dfcb489e04d7ece6c484bf2d92d9" resname="registration.email.message">
+        <source>registration.email.message</source>
+        <target>Votre compte utilisateur "%username%" est maintenant enregistré
+et confirmé.
+
+Nous utiliserons votre adresse mail "% mail%" seulement pour vous
+informer des modifications apportées à votre compte ou avis
+importants au sujet de notre services.
+
+Cordialement,
+L'équipe.</target>
+      </trans-unit>
+      <trans-unit id="fe90ade127f9a5e029e536074c6830a0" resname="list.users.subject">
+        <source>list.users.subject</source>
+        <target>Rapport de l'utilisateur (%date%)</target>
+      </trans-unit>
+      <trans-unit id="4848110b365b47bfeb8dd762f8b86c3e" resname="list.users.headline">
+        <source>list.users.headline</source>
+        <target>Les utilisateurs enregistrés et confirmés</target>
+      </trans-unit>
+      <trans-unit id="27012f024ec09fd7f9bc4f62232fc732" resname="list.users.introduction">
+        <source>list.users.introduction</source>
+        <target>Les utilisateurs suivants ont été enregistrés et confirmés.</target>
+      </trans-unit>
+      <trans-unit id="847c4f916d428d711d9edc0209eae40b" resname="list.user.detail">
+        <source>list.user.detail</source>
+        <target>L'adresse e-mail "%email%" a été confirmé avec les rôles suivants activée
+sur %date%:</target>
+      </trans-unit>
+      <trans-unit id="9fdd4a72bdfe15c619db8e526968da25" resname="ROLE_SUPER_ADMIN">
+        <source>ROLE_SUPER_ADMIN</source>
+        <target>Administrator avec des super pouvoirs</target>
+      </trans-unit>
+      <trans-unit id="4ae33445313a0cef2a17b57ea1d45cb6" resname="ROLE_ADMIN">
+        <source>ROLE_ADMIN</source>
+        <target>Administrateur</target>
+      </trans-unit>
+      <trans-unit id="1871dbe4ffdad6ba92dba845efaa6fa7" resname="ROLE_USER">
+        <source>ROLE_USER</source>
+        <target>Utilisateur régulier</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

@@ -1,11 +1,23 @@
-# List of registered, active users
-The following user accounts are currently registered and confirmed.
+{% block subject %}
+{% autoescape false %}
+{{ 'list.users.subject'|trans({'%date%': date | date() }) }}
+{% endautoescape %}
+{% endblock %}
+{% block body_text %}
+{% autoescape false %}
+# {{ 'list.users.headline' | trans() }}
+
+{{ 'list.users.introduction' | trans() }}
 
 {% for user in users %}
 ## {{ user.username }} (#{{ user.id }})
-{{ user.email }} has been confirmed with the following roles enabled:
+{{ 'list.user.detail' | trans({'%email%': user.email, '%date%': user.created | date() })}}
 {% for role in user.roles %}
-  - {{ role }}
+  - {{ role | trans() }}
 {% endfor %}
 
 {% endfor %}
+{% endautoescape %}
+{% endblock %}
+{% block body_html %}
+{% endblock %}
