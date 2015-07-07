@@ -15,3 +15,7 @@ fos_user:
             enabled:    true
         form:
             type:       app_user_registration
+            validation_groups:  [Registration, Default, AppRegistration]
+    profile:
+        form:
+            validation_groups:  [Profile, Default, AppProfile]
