@@ -68,6 +68,8 @@ class OpcacheClearCommand extends ContainerAwareCommand
      *
      * @param InputInterface  $input
      * @param OutputInterface $output
+     *
+     * @return void
      */
     protected function initialize(InputInterface $input, OutputInterface $output)
     {

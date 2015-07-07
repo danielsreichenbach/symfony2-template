@@ -3,6 +3,7 @@
 namespace AppBundle\Command;
 
 use AppBundle\Entity\Invitation;
+use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Input\InputInterface;
@@ -12,12 +13,17 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * Generates invitation codes
  *
- * @package AppBundle\Command
+ * @author Daniel S. Reichenbach <daniel@kogitoapp.com>
  */
 class GenerateInvitationsCommand extends ContainerAwareCommand
 {
     /**
-     * Configure the command
+     * @var ObjectManager
+     */
+    private $entityManager;
+
+    /**
+     * Set up the command and its' parameters
      */
     protected function configure()
     {
@@ -35,6 +41,23 @@ class GenerateInvitationsCommand extends ContainerAwareCommand
     }
 
     /**
+     * This method is executed before the the execute() method. It's main purpose
+     * is to initialize the variables used in the rest of the command methods.
+     *
+     * @param InputInterface  $input
+     * @param OutputInterface $output
+     *
+     * @return void
+     */
+    protected function initialize(InputInterface $input, OutputInterface $output)
+    {
+        $this->entityManager = $this->getContainer()->get('doctrine')->getManager();
+    }
+
+    /**
+     * This method is executed after initialize(). It usually contains the logic
+     * to execute to complete this command task.
+     *
      * @param InputInterface  $input
      * @param OutputInterface $output
      *
@@ -42,7 +65,6 @@ class GenerateInvitationsCommand extends ContainerAwareCommand
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $entityManager = $this->getContainer()->get('doctrine.orm.entity_manager');
         $inviteAmount  = $input->getOption('amount');
 
         $table = new Table($output);
@@ -51,10 +73,10 @@ class GenerateInvitationsCommand extends ContainerAwareCommand
         for ($inviteNr = 1; $inviteNr <= $inviteAmount; $inviteNr++) {
             $invitation = new Invitation();
             $invitation->setSent(true);
-            $entityManager->persist($invitation);
+            $this->entityManager->persist($invitation);
             $table->addRow(array($inviteNr, $invitation->getCode()));
         }
-        $entityManager->flush();
+        $this->entityManager->flush();
 
         $table->render();
     }

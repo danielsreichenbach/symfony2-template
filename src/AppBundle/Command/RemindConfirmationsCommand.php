@@ -2,6 +2,7 @@
 
 namespace AppBundle\Command;
 
+use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Input\InputInterface;
@@ -10,7 +11,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * Sends out reminders to unconfirmed accounts
  *
- * @package AppBundle\Command
+ * @author Daniel S. Reichenbach <daniel@kogitoapp.com>
  */
 class RemindConfirmationsCommand extends ContainerAwareCommand
 {
@@ -20,7 +21,7 @@ class RemindConfirmationsCommand extends ContainerAwareCommand
     private $entityManager;
 
     /**
-     * Configure the command
+     * Set up the command and its' parameters
      */
     protected function configure()
     {
@@ -33,6 +34,11 @@ class RemindConfirmationsCommand extends ContainerAwareCommand
     /**
      * This method is executed before the the execute() method. It's main purpose
      * is to initialize the variables used in the rest of the command methods.
+     *
+     * @param InputInterface  $input
+     * @param OutputInterface $output
+     *
+     * @return void
      */
     protected function initialize(InputInterface $input, OutputInterface $output)
     {
@@ -40,6 +46,9 @@ class RemindConfirmationsCommand extends ContainerAwareCommand
     }
 
     /**
+     * This method is executed after interact() and initialize(). It usually
+     * contains the logic to execute to complete this command task.
+     *
      * @param InputInterface  $input
      * @param OutputInterface $output
      *
