@@ -70,10 +70,7 @@ app:
             secret:     "%app.secret%"
             host_ip:    127.0.0.1:80
             host_name:  symfony2-template.dev
-            web_dir:    "%kernel.root_dir%/../web"
-            protocol:   http
     request_context:
         host:           symfony2-template.dev
-        scheme:         http
     users:
         default_group:  "%app.users.default_group%"
