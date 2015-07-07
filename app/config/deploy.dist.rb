@@ -3,6 +3,7 @@ lock '3.4.0'
 
 # - Generic deployment settings ----------------------------------------------
 set :application,              'symfony2-template'
+set :deploy_to,                "/var/www/#{application}"
 set :keep_releases,            3
 
 # Default value for :format is :pretty, :dot is much shorter
