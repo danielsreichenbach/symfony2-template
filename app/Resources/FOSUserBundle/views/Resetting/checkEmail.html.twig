@@ -2,8 +2,8 @@
 
 {% trans_default_domain 'FOSUserBundle' %}
 {% block bodyId %}resetting-check-email{% endblock %}
-{% block title %}{{ 'layout.resetting'|trans() }}{% endblock %}
+{% block title %}{{ 'layout.resetting' | trans() }}{% endblock %}
 
 {% block content %}
-<p>{{ 'resetting.check_email'|trans({'%email%': email}) }}</p>
+<p>{{ 'resetting.check_email' | trans({'%email%': email}) }}</p>
 {% endblock content %}

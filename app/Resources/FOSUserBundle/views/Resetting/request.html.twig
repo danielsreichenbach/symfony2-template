@@ -2,19 +2,19 @@
 
 {% trans_default_domain 'FOSUserBundle' %}
 {% block bodyId %}resetting-request{% endblock %}
-{% block title %}{{ 'layout.resetting'|trans() }}{% endblock %}
+{% block title %}{{ 'layout.resetting' | trans() }}{% endblock %}
 
 {% block content %}
 <form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="fos_user_resetting_request" data-abide>
   <div class="username-field">
-    <label for="username">{{ 'resetting.request.username'|trans }}</label>
+    <label for="username">{{ 'resetting.request.username' | trans() }}</label>
     <input type="text" id="username" name="username" required="required"/>
 {% if invalid_username is defined %}
-    <small class="error">{{ 'resetting.request.invalid_username'|trans({'%username%': invalid_username}) }}</small>
+    <small class="error">{{ 'resetting.request.invalid_username' | trans({'%username%': invalid_username}) }}</small>
 {% endif %}
   </div>
   <div class="submit-action">
-    <input class="button radius" type="submit" value="{{ 'resetting.request.submit'|trans }}"/>
+    <input class="button radius" type="submit" value="{{ 'resetting.request.submit' | trans() }}"/>
   </div>
 </form>
 {% endblock content %}

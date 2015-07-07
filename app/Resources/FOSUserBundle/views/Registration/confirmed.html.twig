@@ -2,12 +2,12 @@
 
 {% trans_default_domain 'FOSUserBundle' %}
 {% block bodyId %}registration-confirmation{% endblock %}
-{% block title %}{{ 'layout.register'|trans() }}{% endblock %}
+{% block title %}{{ 'layout.register' | trans() }}{% endblock %}
 
 {% block content %}
-<p>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>
+<p>{{ 'registration.confirmed' | trans({'%username%': user.username}) }}</p>
 {% if app.session is not empty %}
   {% set targetUrl = app.session.get('_security.' ~ app.security.token.providerKey ~ '.target_path') %}
-  {% if targetUrl is not empty %}<p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>{% endif %}
+  {% if targetUrl is not empty %}<p><a href="{{ targetUrl }}">{{ 'registration.back' | trans() }}</a></p>{% endif %}
 {% endif %}
 {% endblock content %}

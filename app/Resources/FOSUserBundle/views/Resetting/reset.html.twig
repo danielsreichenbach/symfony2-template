@@ -2,7 +2,7 @@
 
 {% trans_default_domain 'FOSUserBundle' %}
 {% block bodyId %}resetting-reset{% endblock %}
-{% block title %}{{ 'layout.resetting'|trans() }}{% endblock %}
+{% block title %}{{ 'layout.resetting' | trans() }}{% endblock %}
 
 {% block content %}
 {{ form_start(form, {'action': path('fos_user_resetting_reset', {'token': token}), 'method': 'POST', 'attr': {'class': 'fos_user_resetting_reset', 'data-abide': null}}) }}
@@ -12,7 +12,7 @@
   </div>
 
   <div class="submit-action">
-    <input class="button radius" type="submit" value="{{ 'resetting.reset.submit'|trans }}"/>
+    <input class="button radius" type="submit" value="{{ 'resetting.reset.submit' | trans() }}"/>
   </div>
 {{ form_end(form) }}
 {% endblock content %}

@@ -2,7 +2,7 @@
 
 {% trans_default_domain 'FOSUserBundle' %}
 {% block bodyId %}registration{% endblock %}
-{% block title %}{{ 'layout.register'|trans() }}{% endblock %}
+{% block title %}{{ 'layout.register' | trans() }}{% endblock %}
 
 {% block content %}
 {{ form_start(form, {'action': path('fos_user_registration_register'), 'method': 'POST', 'attr': {'class': 'fos_user_registration_register', 'data-abide': null}}) }}
@@ -30,7 +30,7 @@
   </div>
 
   <div class="submit-action">
-    <input class="button radius" type="submit" value="{{ 'registration.submit'|trans }}"/>
+    <input class="button radius" type="submit" value="{{ 'registration.submit' | trans() }}"/>
   </div>
 {{ form_end(form) }}
 {% endblock content %}

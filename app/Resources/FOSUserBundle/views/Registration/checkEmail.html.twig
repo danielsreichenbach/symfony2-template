@@ -2,8 +2,8 @@
 
 {% trans_default_domain 'FOSUserBundle' %}
 {% block bodyId %}registration-email{% endblock %}
-{% block title %}{{ 'layout.register'|trans() }}{% endblock %}
+{% block title %}{{ 'layout.register' | trans() }}{% endblock %}
 
 {% block content %}
-<p>{{ 'registration.check_email'|trans({'%email%': user.email}) }}</p>
+<p>{{ 'registration.check_email' | trans({'%email%': user.email}) }}</p>
 {% endblock content %}

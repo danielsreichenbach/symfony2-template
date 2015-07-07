@@ -2,12 +2,17 @@
 
 {% trans_default_domain 'FOSUserBundle' %}
 {% block bodyId %}profile-edit{% endblock %}
-{% block title %}{{ 'layout.profile'|trans() }}{% endblock %}
+{% block title %}{{ 'layout.profile' | trans() }}{% endblock %}
 
 {% block content %}
 <div class="fos_user_user_show">
-  <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
+  <p>{{ 'profile.show.username' | trans() }}: {{ user.username }}</p>
 
-  <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
+  <p>{{ 'profile.show.email' | trans() }}: {{ user.email }}</p>
+
+  <p>{{ 'profile.show.created' | trans() }}: {{ user.created | ago() }}</p>
+
+  <p>{{ 'profile.show.last_seen' | trans() }}: {{ user.lastLogin | ago() }}</p>
+
 </div>
 {% endblock content %}

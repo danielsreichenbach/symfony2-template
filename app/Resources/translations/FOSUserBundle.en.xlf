@@ -30,6 +30,14 @@
         <source>form.invitation</source>
         <target>Invitation Code:</target>
       </trans-unit>
+      <trans-unit id="7dced604d2f8d4c03b18212b7f9739f8" resname="profile.show.created">
+        <source>profile.show.created</source>
+        <target>Created</target>
+      </trans-unit>
+      <trans-unit id="d155263dc08dd19a59f6d59f3d094e2c" resname="profile.show.last_seen">
+        <source>profile.show.last_seen</source>
+        <target>Last seen</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
