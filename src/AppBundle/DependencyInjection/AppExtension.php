@@ -3,14 +3,16 @@
 namespace AppBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Processor;
+use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
+use Symfony\Component\DependencyInjection\Loader;
 
 /**
  * This is the class that loads and manages your bundle configuration.
  *
- * @package AppBundle\DependencyInjection
- * @see     http://symfony.com/doc/2.7/cookbook/bundles/extension.html
+ * @author Daniel S. Reichenbach <daniel@kogitoapp.com>
+ * @see    http://symfony.com/doc/2.7/cookbook/bundles/extension.html
  */
 class AppExtension extends Extension
 {
@@ -40,5 +42,8 @@ class AppExtension extends Extension
                 }
             }
         }
+
+        $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader->load('services.xml');
     }
 }

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+  <services>
+    <service id="app.listener.user.events" class="AppBundle\EventListener\UserEventListener">
+      <tag name="kernel.event_subscriber"/>
+      <argument type="service" id="doctrine.orm.entity_manager"/>
+      <argument type="service" id="service_container"/>
+    </service>
+    <service id="app.listener.request.locale" class="AppBundle\EventListener\LocaleListener">
+      <tag name="kernel.event_subscriber"/>
+      <argument>%kernel.default_locale%</argument>
+    </service>
+    <service id="app.listener.session.user.locale" class="AppBundle\EventListener\UserLocaleListener">
+      <tag name="kernel.event_listener" event="security.interactive_login" method="onInteractiveLogin"/>
+      <argument type="service" id="session"/>
+    </service>
+    <service id="app.registration.form.type" class="AppBundle\Form\Type\RegistrationFormType">
+      <tag name="form.type" alias="app_user_registration"/>
+      <argument>%fos_user.model.user.class%</argument>
+    </service>
+    <service id="app.invitation.form.type" class="AppBundle\Form\Type\InvitationFormType">
+      <tag name="form.type" alias="app_invitation_type"/>
+      <argument type="service" id="app.invitation.form.data_transformer"/>
+    </service>
+    <service id="app.invitation.form.data_transformer" class="AppBundle\Form\DataTransformer\InvitationToCodeTransformer">
+      <argument type="service" id="doctrine.orm.entity_manager"/>
+    </service>
+    <service id="app.service.user" class="AppBundle\Service\UserManager">
+      <argument type="service" id="doctrine.orm.entity_manager"/>
+      <argument type="service" id="service_container"/>
+    </service>
+    <service id="app.service.menu" class="AppBundle\Menu\MenuBuilder">
+      <argument type="service" id="knp_menu.factory"/>
+      <argument type="service" id="security.authorization_checker"/>
+    </service>
+    <service id="app.service.menu.user" class="Knp\Menu\MenuItem">
+      <tag name="knp_menu.menu" alias="user"/>
+      <argument type="service" id="request_stack"/>
+      <factory service="app.service.menu" method="createUserMenu"/>
+    </service>
+  </services>
+
+</container>

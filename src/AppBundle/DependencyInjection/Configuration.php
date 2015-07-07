@@ -8,8 +8,8 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 /**
  * This is the class that validates and merges configuration from your app/config files.
  *
- * @package AppBundle\DependencyInjection
- * @see     http://symfony.com/doc/2.7/cookbook/bundles/extension.html#cookbook-bundles-extension-config-class
+ * @author Daniel S. Reichenbach <daniel@kogitoapp.com>
+ * @see    http://symfony.com/doc/2.7/cookbook/bundles/extension.html#cookbook-bundles-extension-config-class
  */
 class Configuration implements ConfigurationInterface
 {
@@ -30,24 +30,25 @@ class Configuration implements ConfigurationInterface
                             ->addDefaultsIfNotSet()
                             ->children()
                                 ->scalarNode('secret')
-                                    ->cannotBeEmpty()
+                                    ->isRequired()
                                     ->defaultValue('ThisKeyIsNotSecret')
                                 ->end()// secret
                                 ->scalarNode('host_ip')
-                                    ->cannotBeEmpty()
+                                    ->isRequired()
                                     ->defaultValue('127.0.0.1:80')
                                 ->end()// host_ip
                                 ->scalarNode('host_name')
-                                    ->cannotBeEmpty()
+                                    ->isRequired()
                                     ->defaultValue('acme.com')
                                 ->end()// host_name
-                                ->enumNode('protocol')
-                                    ->cannotBeEmpty()
-                                    ->values(array('http', 'https'))
+                                ->scalarNode('protocol')
                                     ->defaultValue('http')
-                                ->end()// protocol
+                                    ->validate()
+                                          ->ifNotInArray(array('http', 'https'))
+                                          ->thenInvalid('The connection protocol must be either \'http\' or \'https\'.')
+                                    ->end()
+                                ->end() // protocol
                                 ->scalarNode('web_dir')
-                                    ->cannotBeEmpty()
                                     ->defaultValue('%kernel.root_dir%/../web')
                                 ->end()// web_dir
                             ->end()
@@ -58,7 +59,7 @@ class Configuration implements ConfigurationInterface
                     ->addDefaultsIfNotSet()
                     ->children()
                         ->scalarNode('default_group')
-                            ->cannotBeEmpty()
+                            ->isRequired()
                             ->defaultValue('Users')
                         ->end()
                     ->end()
@@ -67,14 +68,16 @@ class Configuration implements ConfigurationInterface
                     ->addDefaultsIfNotSet()
                     ->children()
                         ->scalarNode('host')
-                            ->cannotBeEmpty()
+                            ->isRequired()
                             ->defaultValue('acme.com')
                         ->end()// host
-                        ->enumNode('scheme')
-                            ->cannotBeEmpty()
-                            ->values(array('http', 'https'))
+                        ->scalarNode('protocol')
                             ->defaultValue('http')
-                        ->end()// scheme
+                            ->validate()
+                                  ->ifNotInArray(array('http', 'https'))
+                                  ->thenInvalid('The connection protocol must be either \'http\' or \'https\'.')
+                            ->end()
+                        ->end() // protocol
                     ->end()
                 ->end() // request_context
             ->end();
