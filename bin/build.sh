@@ -21,12 +21,6 @@ sDatabase=false
 sTranslate=false
 
 # --------------------------------------------------------------------------
-# Source CLI helpers
-# --------------------------------------------------------------------------
-. ${DIR}/libui.sh
-libui_sh_init "cli"
-
-# --------------------------------------------------------------------------
 # Helper functions
 # --------------------------------------------------------------------------
 function usage()
@@ -55,19 +49,22 @@ function verifyRequirements ()
 	if commandExists composer ; then
 		sComposer=`command -v composer`
 	else
-		die_error "Composer is not installed or not within PATH"
+		echo "Composer is not installed or not within PATH"
+		exit 1
 	fi
 
 	if commandExists npm ; then
 		sNPM=`command -v npm`
 	else
-		die_error "Node.js/NPM is not installed or not within PATH"
+		echo "Node.js/NPM is not installed or not within PATH"
+		exit 1
 	fi
 
 	if commandExists cap ; then
 		sCapistrano=`command -v cap`
 	else
-		die_error "Capistrano is not installed or not within PATH"
+		echo "Capistrano is not installed or not within PATH"
+		exit 1
 	fi
 
 	if ! [ -d ${DIR}/../node_modules/ ] ; then
@@ -90,24 +87,34 @@ function applicationCleanup ()
 	for sPath in ${GENERATED_DIRECTORIES[@]} ; do
 		rm -rf ${DIR}/../${sPath}
 	done
+
+	echo "[OK] Generated directories have been removed"
+	echo ""
 }
 
 function applicationInstall ()
 {
-	${sNPM} install ${DIR}/../
-	${DIR}/../node_modules/.bin/bower install
-	${sComposer} install
+	${sNPM} --silent install ${DIR}/../ > /dev/null
+	${DIR}/../node_modules/.bin/bower --silent install > /dev/null
+	${sComposer} --quiet --no-interaction install > /dev/null
+
+	echo "[OK] External dependencies installed"
+	echo ""
 }
 
 function applicationBuild ()
 {
-	${DIR}/../node_modules/.bin/bower install
-	${DIR}/../node_modules/.bin/bower prune
+	${DIR}/../node_modules/.bin/bower --silent install
+	${DIR}/../node_modules/.bin/bower --silent prune
 	${DIR}/../node_modules/.bin/grunt
+
 	for sEnvironment in dev ; do
-		php ${DIR}/../app/console cache:clear --env ${sEnvironment}
-		php ${DIR}/../app/console cache:warmup --env ${sEnvironment}
-		php ${DIR}/../app/console assets:install web --symlink --relative --env ${sEnvironment}
+		php ${DIR}/../app/console --env=${sEnvironment} --quiet cache:clear
+		php ${DIR}/../app/console --env=${sEnvironment} --quiet cache:warmup
+		php ${DIR}/../app/console --env=${sEnvironment} --quiet assets:install web --symlink --relative
+
+		echo "[OK] ${sEnvironment} environment built"
+		echo ""
 	done
 }
 
@@ -140,7 +147,7 @@ case ${i} in
 	;;
 	*)
 	usage
-	die_error "Unknown parameter specified"
+	exit 1
 	;;
 esac
 done
@@ -164,22 +171,29 @@ if [ "${sDatabase}" == "true" ]; then
 	for sEnvironment in dev ; do
 		migrationCount=`ls -1 ${DIR}/../app/migrations/*.php | wc -l`
 		fixturesCount=`ls -1 ${DIR}/../src/AppBundle/DataFixtures/ORM/*.php | wc -l`
-		php ${DIR}/../app/console doctrine:database:drop --force --env ${sEnvironment}
-		php ${DIR}/../app/console doctrine:database:create --env ${sEnvironment}
+		php ${DIR}/../app/console --env=${sEnvironment} --quiet doctrine:database:drop --force
+		php ${DIR}/../app/console --env=${sEnvironment} --quiet doctrine:database:create
 		if [[ ${migrationCount} > 0 ]]; then
-			php ${DIR}/../app/console doctrine:migrations:migrate -n --env ${sEnvironment}
+			php ${DIR}/../app/console --env=${sEnvironment} --quiet --no-interaction doctrine:migrations:migrate
 		else
-			php ${DIR}/../app/console doctrine:schema:update -n --force --env ${sEnvironment}
+			php ${DIR}/../app/console --env=${sEnvironment} --quiet --no-interaction doctrine:schema:update --force
 		fi
 		if [[ ${fixturesCount} > 0 ]]; then
-			php ${DIR}/../app/console doctrine:fixtures:load -n --env ${sEnvironment}
+			php ${DIR}/../app/console --env=${sEnvironment} --quiet --no-interaction doctrine:fixtures:load
 		fi
+
+		echo "[OK] ${sEnvironment} database prepared"
+		echo ""
 	done
 fi
 
 if [ "${sTranslate}" == "true" ]; then
 	for sLocale in en de fr ; do
-		php ${DIR}/../app/console translation:update --no-backup --dump-messages --output-format=xlf --force ${sLocale} app
+		php ${DIR}/../app/console translation:update --env=${sEnvironment} --quiet --no-backup --dump-messages --output-format=xlf --force ${sLocale} app
+		php ${DIR}/../app/console translation:update --env=${sEnvironment} --quiet --no-backup --dump-messages --output-format=xlf --force ${sLocale} MarenkayForumBundle
+
+		echo "[OK] ${sLocale} translation updated"
+		echo ""
 	done
 fi
 
