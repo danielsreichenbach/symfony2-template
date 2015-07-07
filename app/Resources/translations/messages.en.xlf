@@ -54,6 +54,36 @@ enabled on %date%:</target>
         <source>ROLE_USER</source>
         <target>Regular user</target>
       </trans-unit>
+      <trans-unit id="f44aa1753276df57a0e69e91a9a9a362" resname="change_password.email.subject">
+        <source>change_password.email.subject</source>
+        <target>Password updated for %username%</target>
+      </trans-unit>
+      <trans-unit id="1e3d76102a60d7b4e82e8c20e7be1ef9" resname="change_password.email.message">
+        <source>change_password.email.message</source>
+        <target>The password for your account "%username%" was recently updated, and
+your account currently uses the mail address "%email%".
+
+If this update was not initiated by you, please contact our team to
+revert the change.
+
+Regards,
+the Team.</target>
+      </trans-unit>
+      <trans-unit id="24ef36794ef0bffa786074f748d57525" resname="resetting.email.subject">
+        <source>resetting.email.subject</source>
+        <target>Password reset for %username%</target>
+      </trans-unit>
+      <trans-unit id="f96be8411b3b48e5a82ee13dd33afeb4" resname="resetting.email.message">
+        <source>resetting.email.message</source>
+        <target>The password for your account "%username%" was recently reset, and
+your account currently uses the mail address "%email%".
+
+If this reset was not initiated by you, please contact our team to
+revert the change.
+
+Regards,
+the Team.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

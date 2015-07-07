@@ -55,6 +55,37 @@ sur %date%:</target>
         <source>ROLE_USER</source>
         <target>Utilisateur régulier</target>
       </trans-unit>
+      <trans-unit id="f44aa1753276df57a0e69e91a9a9a362" resname="change_password.email.subject">
+        <source>change_password.email.subject</source>
+        <target>Mot de passe mis à jour pour %username%</target>
+      </trans-unit>
+      <trans-unit id="1e3d76102a60d7b4e82e8c20e7be1ef9" resname="change_password.email.message">
+        <source>change_password.email.message</source>
+        <target>Le mot de passe pour votre compte "%username%" a été récemment mis à jour, et
+votre compte utilise actuellement le mail "%email%".
+
+Si cette mise à jour n'a pas été initiée par vous, s'il vous plaît contacter
+notre équipe pour rétablir le changement.
+
+Cordialement,
+L'équipe.</target>
+      </trans-unit>
+      <trans-unit id="24ef36794ef0bffa786074f748d57525" resname="resetting.email.subject">
+        <source>resetting.email.subject</source>
+        <target>Réinitialisation de mot de passe pour %username%</target>
+      </trans-unit>
+      <trans-unit id="f96be8411b3b48e5a82ee13dd33afeb4" resname="resetting.email.message">
+        <source>resetting.email.message</source>
+        <target>
+Le mot de passe pour votre compte "%username%" a été récemment remis à zéro,
+et que votre compte utilise actuellement le mail "%email%".
+
+Si cette restauration n'a pas été initiée par vous, s'il vous plaît contacter
+notre équipe pour rétablir le changement.
+
+Cordialement,
+L'équipe.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

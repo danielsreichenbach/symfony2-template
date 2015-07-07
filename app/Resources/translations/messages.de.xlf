@@ -54,6 +54,36 @@ am %date%:</target>
         <source>ROLE_USER</source>
         <target>Regulärer Benutzer</target>
       </trans-unit>
+      <trans-unit id="f44aa1753276df57a0e69e91a9a9a362" resname="change_password.email.subject">
+        <source>change_password.email.subject</source>
+        <target>Passwort geändert für %username%</target>
+      </trans-unit>
+      <trans-unit id="1e3d76102a60d7b4e82e8c20e7be1ef9" resname="change_password.email.message">
+        <source>change_password.email.message</source>
+        <target>Das Passwort für Ihren Benutzer "%username%" wurde kürzlich geändert und Ihr
+Benutzerzugang verwendet derzeit die Email Adresse "%email%".
+
+Sollte diese Änderung nicht von Ihnen ausgegangen sein kontaktieren Sie
+bitte unser Team um die Änderungen rückgängig zu machen.
+
+Mit freundlichen Grüßen,
+das Team.</target>
+      </trans-unit>
+      <trans-unit id="24ef36794ef0bffa786074f748d57525" resname="resetting.email.subject">
+        <source>resetting.email.subject</source>
+        <target>Passwort zurückgesetzt für %username%</target>
+      </trans-unit>
+      <trans-unit id="f96be8411b3b48e5a82ee13dd33afeb4" resname="resetting.email.message">
+        <source>resetting.email.message</source>
+        <target>Das Passwort für Ihren Benutzer "%username%" wurde kürzlich zurückgesetzt
+und Ihr Benutzerzugang verwendet derzeit die Email Adresse "%email%".
+
+Sollte diese Änderung nicht von Ihnen ausgegangen sein kontaktieren Sie
+bitte unser Team um die Änderungen rückgängig zu machen.
+
+Mit freundlichen Grüßen,
+das Team.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

@@ -89,6 +89,7 @@ class UserEventListener implements EventSubscriberInterface
         $userManager = $this->container->get('app.service.user');
 
         $userManager->addUserTodefaultGroup($user);
+        $userManager->onRegistrationConfirmed($user);
     }
 
     /**
@@ -101,7 +102,10 @@ class UserEventListener implements EventSubscriberInterface
         /** @var \AppBundle\Entity\User $user */
         $user = $event->getForm()->getData();
 
-        // ... do something which requires access to the unencrypted password
+        /** @var \AppBundle\Service\UserManager $userManager */
+        $userManager = $this->container->get('app.service.user');
+
+        $userManager->onChangePasswordSuccess($user);
     }
 
     /**
@@ -114,7 +118,10 @@ class UserEventListener implements EventSubscriberInterface
         /** @var \AppBundle\Entity\User $user */
         $user = $event->getForm()->getData();
 
-        // ... do something which requires access to the unencrypted password
+        /** @var \AppBundle\Service\UserManager $userManager */
+        $userManager = $this->container->get('app.service.user');
+
+        $userManager->onResettingResetSuccess($user);
     }
 
     /**
