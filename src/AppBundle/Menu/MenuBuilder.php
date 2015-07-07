@@ -29,12 +29,12 @@ class MenuBuilder
      * Menu builder constructor
      *
      * @param FactoryInterface              $factory
-     * @param AuthorizationCheckerInterface $securityContext
+     * @param AuthorizationCheckerInterface $authorizationChecker
      */
-    public function __construct(FactoryInterface $factory, AuthorizationCheckerInterface $securityContext)
+    public function __construct(FactoryInterface $factory, AuthorizationCheckerInterface $authorizationChecker)
     {
         $this->factory             = $factory;
-        $this->autorizationChecker = $securityContext;
+        $this->autorizationChecker = $authorizationChecker;
     }
 
     /**

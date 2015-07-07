@@ -18,6 +18,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 class User extends BaseUser
 {
     /**
+     * The unique identifier
+     *
      * @var integer
      *
      * @ORM\Id
@@ -27,6 +29,8 @@ class User extends BaseUser
     protected $id;
 
     /**
+     * The users preferred site locale
+     *
      * @var string
      *
      * @ORM\Column(name="locale", type="string", length=2, nullable=false)
@@ -34,6 +38,8 @@ class User extends BaseUser
     protected $locale;
 
     /**
+     * Entity creation time stamp
+     *
      * @var \DateTime
      *
      * @Gedmo\Timestampable(on="create")
@@ -42,6 +48,8 @@ class User extends BaseUser
     protected $created;
 
     /**
+     * Entity last update time stamp
+     *
      * @var \DateTime
      *
      * @Gedmo\Timestampable(on="update")
@@ -88,7 +96,7 @@ class User extends BaseUser
     }
 
     /**
-     * Set the users locale
+     * Set the users preferred site locale
      *
      * @param string $locale
      *
@@ -102,7 +110,7 @@ class User extends BaseUser
     }
 
     /**
-     * Get the users current locale
+     * Get the users preferred site locale
      *
      * @return string
      */
@@ -112,6 +120,8 @@ class User extends BaseUser
     }
 
     /**
+     * Returns the entities creation time stamp
+     *
      * @return \DateTime
      */
     public function getCreated()
@@ -120,6 +130,8 @@ class User extends BaseUser
     }
 
     /**
+     * Returns the entities last update time stamp
+     *
      * @return \DateTime
      */
     public function getUpdated()
@@ -128,7 +140,9 @@ class User extends BaseUser
     }
 
     /**
-     * @return mixed
+     * Returns the users invitation code
+     *
+     * @return Invitation|null
      */
     public function getInvitation()
     {
@@ -136,9 +150,11 @@ class User extends BaseUser
     }
 
     /**
-     * @param mixed $invitation
+     * Set the users invittaion code
+     *
+     * @param Invitation $invitation
      */
-    public function setInvitation($invitation)
+    public function setInvitation(Invitation $invitation)
     {
         $this->invitation = $invitation;
     }

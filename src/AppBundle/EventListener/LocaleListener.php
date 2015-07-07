@@ -18,6 +18,11 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
  */
 class LocaleListener implements EventSubscriberInterface
 {
+    /**
+     * The sites default locale
+     *
+     * @var string
+     */
     private $defaultLocale;
 
     /**

@@ -10,7 +10,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 /**
  * Class InvitationFormType
  *
- * @package AppBundle\Form\Type
+ * @author Daniel S. Reichenbach <daniel@kogitoapp.com>
  */
 class InvitationFormType extends AbstractType
 {

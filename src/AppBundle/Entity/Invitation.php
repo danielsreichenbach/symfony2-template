@@ -16,6 +16,8 @@ use Doctrine\ORM\Mapping as ORM;
 class Invitation
 {
     /**
+     * The unique identifier
+     *
      * @var integer
      *
      * @ORM\Id
@@ -48,6 +50,8 @@ class Invitation
     protected $sent = false;
 
     /**
+     * Entity creation time stamp
+     *
      * @var \DateTime
      *
      * @Gedmo\Timestampable(on="create")
@@ -56,6 +60,8 @@ class Invitation
     protected $created;
 
     /**
+     * Entity last update time stamp
+     *
      * @var \DateTime
      *
      * @Gedmo\Timestampable(on="update")
@@ -143,6 +149,8 @@ class Invitation
     }
 
     /**
+     * Returns the entities creation time stamp
+     *
      * @return \DateTime
      */
     public function getCreated()
@@ -151,6 +159,8 @@ class Invitation
     }
 
     /**
+     * Returns the entities last update time stamp
+     *
      * @return \DateTime
      */
     public function getUpdated()

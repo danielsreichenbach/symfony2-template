@@ -8,7 +8,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 /**
  * Invitation based user registration form
  *
- * @package AppBundle\Form\Type
+ * @author Daniel S. Reichenbach <daniel@kogitoapp.com>
  */
 class RegistrationFormType extends BaseRegistrationFormType
 {
@@ -21,7 +21,14 @@ class RegistrationFormType extends BaseRegistrationFormType
         parent::buildForm($builder, $options);
 
         $builder
-            ->add('invitation', 'app_invitation_type', array('label' => 'form.invitation', 'translation_domain' => 'FOSUserBundle'));
+            ->add(
+                'invitation',
+                'app_invitation_type',
+                array(
+                    'label' => 'form.invitation',
+                    'translation_domain' => 'FOSUserBundle',
+                )
+            );
     }
 
     /**

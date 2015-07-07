@@ -17,6 +17,8 @@ use FOS\UserBundle\Model\Group as BaseGroup;
 class Group extends BaseGroup
 {
     /**
+     * The unique identifier
+     *
      * @var integer
      *
      * @ORM\Id
@@ -26,6 +28,8 @@ class Group extends BaseGroup
     protected $id;
 
     /**
+     * Entity creation time stamp
+     *
      * @var \DateTime
      *
      * @Gedmo\Timestampable(on="create")
@@ -34,6 +38,8 @@ class Group extends BaseGroup
     protected $created;
 
     /**
+     * Entity last update time stamp
+     *
      * @var \DateTime
      *
      * @Gedmo\Timestampable(on="update")
@@ -52,6 +58,8 @@ class Group extends BaseGroup
     }
 
     /**
+     * Returns the entities creation time stamp
+     *
      * @return \DateTime
      */
     public function getCreated()
@@ -60,6 +68,8 @@ class Group extends BaseGroup
     }
 
     /**
+     * Returns the entities last update time stamp
+     *
      * @return \DateTime
      */
     public function getUpdated()
