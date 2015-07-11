@@ -8,10 +8,6 @@
     "license": "MIT",
     "homepage": "http://kogitoapp.com/",
     "author": "Daniel S. Reichenbach <daniel@kogitoapp.com>",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/danielsreichenbach/symfony2-template.git"
-    },
     "private": true,
     "devDependencies": {},
     "dependencies": {
