@@ -20,5 +20,5 @@ fos_user_resetting:
 
 # App Bundle routes
 app:
-    resource: "@AppBundle/Controller/"
-    type:     annotation
+    resource: "@AppBundle/Resources/config/routing/pages.xml"
+    prefix: /
