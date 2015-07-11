@@ -49,8 +49,8 @@ module.exports = function (grunt) {
                 files: [
                     {
                         expand: true,
-                        cwd: '<%= bower.directory %>/fontface-source-sans-pro/fonts',
-                        src: ['EOT/*', 'OTF/*', 'TTF/*', 'WOFF/*'],
+                        cwd: '<%= bower.directory %>/open-sans-fontface/fonts',
+                        src: ['Light/*', 'LightItalic/*', 'Regular/*', 'Italic/*', 'Semibold/*', 'SemiboldItalic/*', 'Bold/*', 'BoldItalic/*', 'ExtraBold/*', 'ExtraBoldItalic/*'],
                         dest: '<%= project.fonts %>',
                         options: {
                             mode: '0644'

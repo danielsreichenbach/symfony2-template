@@ -3,13 +3,13 @@
 // -------------------------------------
 //   Configuration and browser reset
 // -------------------------------------
-$SourceSansProFontsPath: "../fonts";
+$OpenSansPath: "../fonts";
 $fi-path: "../fonts";
 
 // -------------------------------------
 //   Vendor
 // -------------------------------------
-@import '../vendor/fontface-source-sans-pro/scss/source-sans-pro';
+@import '../vendor/open-sans-fontface/open-sans';
 @import '../vendor/foundation-icon-fonts/foundation-icons';
 @import '../vendor/foundation/scss/normalize';
 @import '../vendor/foundation/scss/foundation';

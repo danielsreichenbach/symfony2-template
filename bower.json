@@ -15,10 +15,10 @@
     ],
     "homepage": "http://kogitoapp.com/",
     "dependencies": {
-        "foundation": "~5.5.2",
         "foundation-icon-fonts": "*",
+        "foundation": "~5.5.2",
         "animate-sass": "~0.6.4",
-        "fontface-source-sans-pro": "*"
+        "open-sans-fontface": "~1.4.2"
     },
     "private": true
 }
