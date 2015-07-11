@@ -58,7 +58,11 @@ class User extends BaseUser
     protected $updated;
 
     /**
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Group")
+     * List of Group entities to which a User is assigned
+     *
+     * @var Group|[]
+     *
+     * @ORM\ManyToMany(targetEntity="Group")
      * @ORM\JoinTable(name="fos_users_groups",
      *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="group_id", referencedColumnName="id")}
@@ -71,7 +75,8 @@ class User extends BaseUser
      *
      * @ORM\OneToOne(targetEntity="Invitation", inversedBy="user")
      * @ORM\JoinColumn(referencedColumnName="id")
-     * @Assert\NotNull(message="user.invitation.invalid", groups={"Registration"})
+     *
+     * @Assert\NotNull(message="user.invitation.invalid", groups={"AppRegistration"})
      */
     protected $invitation;
 
