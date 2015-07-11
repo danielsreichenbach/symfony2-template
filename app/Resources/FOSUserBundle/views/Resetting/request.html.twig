@@ -7,13 +7,15 @@
 {% block content %}
 <form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="fos_user_resetting_request" data-abide>
   <div class="username-field">
-    <label for="username">{{ 'resetting.request.username' | trans() }}</label>
-    <input type="text" id="username" name="username" required="required"/>
+    <label for="username">
+      {{ 'resetting.request.username' | trans() }}
+      <input type="text" id="username" name="username" required="required"/>
+    </label>
 {% if invalid_username is defined %}
     <small class="error">{{ 'resetting.request.invalid_username' | trans({'%username%': invalid_username}) }}</small>
 {% endif %}
   </div>
-  <div class="submit-action">
+  <div class="form-action">
     <input class="button radius" type="submit" value="{{ 'resetting.request.submit' | trans() }}"/>
   </div>
 </form>
