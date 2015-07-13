@@ -44,6 +44,9 @@ class AppExtension extends Extension
         }
 
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
-        $loader->load('services.xml');
+
+        foreach (array('form', 'listeners', 'services', 'twig') as $basename) {
+            $loader->load(sprintf('%s.xml', $basename));
+        }
     }
 }

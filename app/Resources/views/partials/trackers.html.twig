@@ -1,0 +1,6 @@
+{% if app.environment == 'dev' %}
+  <!-- no trackers displayed in "{{ app.environment }}" environment -->
+{% else %}
+  <!-- google analytics -->
+  {{ google_analytics_tracker('default') }}
+{% endif %}

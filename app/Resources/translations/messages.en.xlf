@@ -84,6 +84,10 @@ revert the change.
 Regards,
 the Team.</target>
       </trans-unit>
+      <trans-unit id="acf607165edf7bef72eb28b17efa35b3" resname="user.profile">
+        <source>user.profile</source>
+        <target>User profile for "%username%"</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

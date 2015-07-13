@@ -84,6 +84,10 @@ bitte unser Team um die Änderungen rückgängig zu machen.
 Mit freundlichen Grüßen,
 das Team.</target>
       </trans-unit>
+      <trans-unit id="acf607165edf7bef72eb28b17efa35b3" resname="user.profile">
+        <source>user.profile</source>
+        <target>Benutzerprofil von "%username%"</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

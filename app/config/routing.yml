@@ -4,11 +4,11 @@ fos_user_security:
 
 fos_user_profile:
     resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
-    prefix: /account
+    prefix: /admin/account
 
 fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
-    prefix: /account
+    prefix: /admin/account
 
 fos_user_registration:
     resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
@@ -19,6 +19,10 @@ fos_user_resetting:
     prefix: /reset
 
 # App Bundle routes
-app:
+app_pages:
     resource: "@AppBundle/Resources/config/routing/pages.xml"
+    prefix: /
+
+app_users:
+    resource: "@AppBundle/Resources/config/routing/user.xml"
     prefix: /

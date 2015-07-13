@@ -74,3 +74,5 @@ app:
         host:           symfony2-template.dev
     users:
         default_group:  "%app.users.default_group%"
+    google_analytics:
+        default:        "%google.tracking_code%"

@@ -1,0 +1,23 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}{{ 'user.profile' | trans({'%username%': user.username}) }}{% endblock %}
+
+{% block content %}
+  <!-- User profile -->
+  <div>
+      <!-- generic user information -->
+      <div>
+        <img src="{{ user.email | gravatar }}"/>
+        <h2>{{ user.username }}</h2>
+      </div>
+
+      <!-- meta data such as experience and awards -->
+      <div>
+      </div>
+  </div>
+
+  <!-- timeline of user related data created -->
+  <div>
+
+  </div>
+{% endblock %}

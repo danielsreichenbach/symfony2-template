@@ -1,0 +1,25 @@
+<h1>List of registered, active users</h1>
+<p>
+  The following user accounts are currently registered and confirmed.
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Username</th>
+      <th>Email</th>
+      <th>Roles</th>
+    </tr>
+  </thead>
+  <tbody>
+{% for user in users %}
+    <tr>
+      <td>{{ user.id }}</td>
+      <td>{{ user.username }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.roles|join(', ') }}</td>
+    </tr>
+{% endfor %}
+  </tbody>
+</table>

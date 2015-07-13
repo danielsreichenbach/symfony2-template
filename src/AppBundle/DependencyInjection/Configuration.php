@@ -80,6 +80,24 @@ class Configuration implements ConfigurationInterface
                         ->end() // protocol
                     ->end()
                 ->end() // request_context
+                ->arrayNode('google_analytics')
+                    ->prototype('array')
+                        ->beforeNormalization()
+                            ->ifString()
+                            ->then(function ($propertyId) {
+                                return array('property_id' => $propertyId);
+                            })
+                        ->end()
+                        ->children()
+                            ->scalarNode('property_id')
+                                ->isRequired()
+                            ->end()
+                            ->booleanNode('require_display_features')
+                                ->defaultFalse()
+                            ->end()
+                        ->end()
+                    ->end()
+                ->end() // google_analytics
             ->end();
 
         return $treeBuilder;

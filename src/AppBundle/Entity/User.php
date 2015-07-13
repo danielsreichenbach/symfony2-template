@@ -33,6 +33,7 @@ class User extends BaseUser
      *
      * @var string
      *
+     * @Assert\Locale()
      * @ORM\Column(name="locale", type="string", length=2, nullable=false)
      */
     protected $locale;
@@ -73,10 +74,9 @@ class User extends BaseUser
     /**
      * @var Invitation
      *
+     * @Assert\NotNull(message="user.invitation.invalid", groups={"AppRegistration"})
      * @ORM\OneToOne(targetEntity="Invitation", inversedBy="user")
      * @ORM\JoinColumn(referencedColumnName="id")
-     *
-     * @Assert\NotNull(message="user.invitation.invalid", groups={"AppRegistration"})
      */
     protected $invitation;
 

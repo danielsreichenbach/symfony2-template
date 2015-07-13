@@ -13,9 +13,7 @@
         }
     ],
     "support": {
-        "email": "daniel@kogitoapp.com",
-        "issues": "https://github.com/danielsreichenbach/symfony2-template/issues",
-        "source": "https://github.com/danielsreichenbach/symfony2-template"
+        "email": "daniel@kogitoapp.com"
     },
     "require": {
         "php":                                      ">=5.4.5",

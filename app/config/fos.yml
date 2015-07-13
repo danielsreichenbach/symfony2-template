@@ -18,4 +18,5 @@ fos_user:
             validation_groups:  [Registration, Default, AppRegistration]
     profile:
         form:
+            type:       app_user_profile
             validation_groups:  [Profile, Default, AppProfile]

@@ -1,10 +1,11 @@
 <?php
 
-namespace AppBundle\Menu;
+namespace AppBundle\Service;
 
 use Knp\Menu\FactoryInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 /**
  * The MenuBuilder is responsible for providing context sensitive menus for the site.
@@ -19,22 +20,31 @@ class MenuBuilder
     private $factory;
 
     /**
-     * Security context.
+     * Authorization checker
      *
      * @var AuthorizationCheckerInterface
      */
     protected $autorizationChecker;
 
     /**
+     * Token storage
+     *
+     * @var TokenStorageInterface
+     */
+    protected $tokenStorage;
+
+    /**
      * Menu builder constructor
      *
      * @param FactoryInterface              $factory
      * @param AuthorizationCheckerInterface $authorizationChecker
+     * @param TokenStorageInterface         $tokenstorage
      */
-    public function __construct(FactoryInterface $factory, AuthorizationCheckerInterface $authorizationChecker)
+    public function __construct(FactoryInterface $factory, AuthorizationCheckerInterface $authorizationChecker, TokenStorageInterface $tokenstorage)
     {
         $this->factory             = $factory;
         $this->autorizationChecker = $authorizationChecker;
+        $this->tokenStorage        = $tokenstorage;
     }
 
     /**
@@ -54,7 +64,10 @@ class MenuBuilder
         );
 
         if ($this->autorizationChecker->isGranted('ROLE_USER')) {
-            $menu->addChild('user.profile', array('route' => 'fos_user_profile_show'));
+            $user = $this->tokenStorage->getToken()->getUser();
+
+            $menu->addChild('user.profile', array('route' => 'app_user_profile', 'routeParameters' => array('username' => $user->getUsername())));
+            $menu->addChild('user.account_settings', array('route' => 'fos_user_profile_edit'));
             $menu->addChild('user.logout', array('route' => 'fos_user_security_logout'));
         } else {
             $menu->addChild('user.login', array('route' => 'fos_user_security_login'));

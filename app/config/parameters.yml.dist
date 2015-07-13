@@ -22,3 +22,5 @@ parameters:
     app.mail.sender_name:       Support Team
 
     app.users.default_group:    Users
+
+    google.tracking_code:       'UA-12345678-90'

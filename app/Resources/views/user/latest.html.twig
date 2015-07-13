@@ -1,0 +1,4 @@
+<h2>Latest registered users</h2>
+{% for user in users %}
+<a href="{{ path('app_user_profile', {'username': user.username}) }}">{{ user.username }}</a>
+{% endfor %}

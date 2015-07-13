@@ -2,4 +2,6 @@
 
 {% block content %}
   {{ 'app.homepage' | trans() }}
+
+  {{ render(controller('AppBundle:User:latest')) }}
 {% endblock %}

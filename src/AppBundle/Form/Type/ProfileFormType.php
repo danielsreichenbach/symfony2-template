@@ -2,15 +2,15 @@
 
 namespace AppBundle\Form\Type;
 
-use FOS\UserBundle\Form\Type\RegistrationFormType as BaseRegistrationFormType;
+use FOS\UserBundle\Form\Type\ProfileFormType as BaseProfileFormType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 /**
- * Invitation based user registration form
+ * Extends profile form with locale support
  *
  * @author Daniel S. Reichenbach <daniel@kogitoapp.com>
  */
-class RegistrationFormType extends BaseRegistrationFormType
+class ProfileFormType extends BaseProfileFormType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -21,6 +21,7 @@ class RegistrationFormType extends BaseRegistrationFormType
         parent::buildForm($builder, $options);
 
         $builder
+            ->remove('username')
             ->add(
                 'locale',
                 'choice',
@@ -37,15 +38,6 @@ class RegistrationFormType extends BaseRegistrationFormType
                     'label' => 'form.locale',
                     'translation_domain' => 'FOSUserBundle',
                 )
-            )
-            ->add(
-                'invitation',
-                'app_invitation_type',
-                array(
-                    'required' => true,
-                    'label' => 'form.invitation',
-                    'translation_domain' => 'FOSUserBundle',
-                )
             );
     }
 
@@ -54,7 +46,7 @@ class RegistrationFormType extends BaseRegistrationFormType
      */
     public function getParent()
     {
-        return 'fos_user_registration';
+        return 'fos_user_profile';
     }
 
     /**
@@ -62,6 +54,6 @@ class RegistrationFormType extends BaseRegistrationFormType
      */
     public function getName()
     {
-        return 'app_user_registration';
+        return 'app_user_profile';
     }
 }

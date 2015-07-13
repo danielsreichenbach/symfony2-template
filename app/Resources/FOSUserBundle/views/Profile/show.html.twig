@@ -2,13 +2,17 @@
 
 {% trans_default_domain 'FOSUserBundle' %}
 {% block bodyId %}profile-edit{% endblock %}
-{% block title %}{{ 'layout.profile' | trans() }}{% endblock %}
+{% block title %}{{ 'layout.account' | trans() }}{% endblock %}
+
+{% set preferred_locale = 'app.locale.' ~ user.locale %}
 
 {% block content %}
 <div class="fos_user_user_show">
-  <p>{{ 'profile.show.username' | trans() }}: {{ user.username }}</p>
+  <p>{{ 'profile.show.username' | trans() }}: <a href="{{ path('app_user_profile', {'username': user.username}) }}">{{ user.username }}</a></p>
 
   <p>{{ 'profile.show.email' | trans() }}: {{ user.email }}</p>
+
+  <p>{{ 'profile.show.locale' | trans() }}: {{ preferred_locale | trans() }}</p>
 
   <p>{{ 'profile.show.created' | trans() }}: {{ user.created | ago() }}</p>
 

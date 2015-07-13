@@ -190,7 +190,6 @@ fi
 if [ "${sTranslate}" == "true" ]; then
 	for sLocale in en de fr ; do
 		php ${DIR}/../app/console translation:update --env=${sEnvironment} --quiet --no-backup --dump-messages --output-format=xlf --force ${sLocale} app
-		php ${DIR}/../app/console translation:update --env=${sEnvironment} --quiet --no-backup --dump-messages --output-format=xlf --force ${sLocale} MarenkayForumBundle
 
 		echo "[OK] ${sLocale} translation updated"
 		echo ""

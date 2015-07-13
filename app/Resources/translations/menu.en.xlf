@@ -6,17 +6,21 @@
         <source>user.login</source>
         <target>Login</target>
       </trans-unit>
-      <trans-unit id="d6738e5cbd718a3864bed1a5cb496c58" resname="user.logout">
-        <source>user.logout</source>
-        <target>Logout</target>
+      <trans-unit id="f83db05233319b3ae15d6081e41153be" resname="user.register">
+        <source>user.register</source>
+        <target>Register</target>
+      </trans-unit>
+      <trans-unit id="630a5b07f1ccbd290b9327b14abcb0b4" resname="user.account_settings">
+        <source>user.account_settings</source>
+        <target>Settings</target>
       </trans-unit>
       <trans-unit id="acf607165edf7bef72eb28b17efa35b3" resname="user.profile">
         <source>user.profile</source>
         <target>Profile</target>
       </trans-unit>
-      <trans-unit id="f83db05233319b3ae15d6081e41153be" resname="user.register">
-        <source>user.register</source>
-        <target>Register</target>
+      <trans-unit id="d6738e5cbd718a3864bed1a5cb496c58" resname="user.logout">
+        <source>user.logout</source>
+        <target>Logout</target>
       </trans-unit>
     </body>
   </file>

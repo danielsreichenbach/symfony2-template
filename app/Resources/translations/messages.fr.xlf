@@ -86,6 +86,10 @@ notre équipe pour rétablir le changement.
 Cordialement,
 L'équipe.</target>
       </trans-unit>
+      <trans-unit id="acf607165edf7bef72eb28b17efa35b3" resname="user.profile">
+        <source>user.profile</source>
+        <target>Profil de l'utilisateur "%username%"</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

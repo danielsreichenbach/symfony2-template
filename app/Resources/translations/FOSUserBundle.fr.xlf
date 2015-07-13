@@ -18,9 +18,13 @@
         <source>layout.login</source>
         <target>Connexion</target>
       </trans-unit>
-      <trans-unit id="6d17776939776ade666310c3af87423b" resname="layout.profile">
-        <source>layout.profile</source>
-        <target>Profil</target>
+      <trans-unit id="c237e2b24f31488e7cb524bc08666d79" resname="layout.account">
+        <source>layout.account</source>
+        <target>Compte</target>
+      </trans-unit>
+      <trans-unit id="27b4e4ac428ef1729c7a9b8ccf03880e" resname="layout.account_settings">
+        <source>layout.account_settings</source>
+        <target>Paramètres</target>
       </trans-unit>
       <trans-unit id="950b7e3bc163a2a51e0cc544c572563f" resname="layout.resetting">
         <source>layout.resetting</source>
@@ -37,6 +41,26 @@
       <trans-unit id="d155263dc08dd19a59f6d59f3d094e2c" resname="profile.show.last_seen">
         <source>profile.show.last_seen</source>
         <target>Vue la dernière fois</target>
+      </trans-unit>
+      <trans-unit id="cdc25249c1304ad0241e1ed38295361d" resname="profile.show.locale">
+        <source>profile.show.locale</source>
+        <target>Langue préférée</target>
+      </trans-unit>
+      <trans-unit id="281c2949f145b27703849210cb03fb27" resname="form.locale">
+        <source>form.locale</source>
+        <target>Langue préférée</target>
+      </trans-unit>
+      <trans-unit id="4ea09960a2d54f76515ef8ef4472d337" resname="app.locale.en">
+        <source>app.locale.en</source>
+        <target>Anglais</target>
+      </trans-unit>
+      <trans-unit id="d9314304d11cd5ec0b2ed384113811b5" resname="app.locale.de">
+        <source>app.locale.de</source>
+        <target>Allemand</target>
+      </trans-unit>
+      <trans-unit id="44555afe313718388cdfa423288ec533" resname="app.locale.fr">
+        <source>app.locale.fr</source>
+        <target>Français</target>
       </trans-unit>
     </body>
   </file>

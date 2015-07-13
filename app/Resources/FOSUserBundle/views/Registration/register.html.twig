@@ -23,6 +23,12 @@
     <small class="error">{{ form_errors(form.plainPassword) }}</small>
   </div>
 
+  <div class="locale-field">
+    {{ form_label(form.locale) }}
+    {{ form_widget(form.locale) }}
+    <small class="error">{{ form_errors(form.locale) }}</small>
+  </div>
+
   <div class="invitation-field">
     {{ form_label(form.invitation) }}
     {{ form_widget(form.invitation) }}

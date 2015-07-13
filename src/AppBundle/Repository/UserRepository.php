@@ -36,8 +36,25 @@ class UserRepository extends EntityRepository
     public function findUnconfirmedUsers()
     {
         $queryBuilder = $this->getQueryBuilder()
-        ->where('u.enabled = 0')
-        ->andWhere('u.confirmationToken IS NOT NULL');
+            ->where('u.enabled = 0')
+            ->andWhere('u.confirmationToken IS NOT NULL');
+
+        return $queryBuilder->getQuery()->getResult();
+    }
+
+    /**
+     * Retrieve the latest registered, enabled users
+     *
+     * @param  integer $amount
+     *
+     * @return array|\AppBundle\Entity\User[]
+     */
+    public function findLatestUsers($amount)
+    {
+        $queryBuilder = $this->getQueryBuilder()
+            ->orderBy('u.created', 'DESC')
+            ->where('u.enabled = 1')
+            ->setMaxResults($amount);
 
         return $queryBuilder->getQuery()->getResult();
     }
