@@ -1,3 +1,4 @@
+/*! Symfony2 Template | MIT License | http://symfony2-template.io */
 @charset "UTF-8";
 
 // -------------------------------------
@@ -5,6 +6,12 @@
 // -------------------------------------
 $OpenSansPath: "../fonts";
 $fi-path: "../fonts";
+
+// -------------------------------------
+//   Foundation
+// -------------------------------------
+@import 'settings/foundation';
+@import 'settings/animate';
 
 // -------------------------------------
 //   Vendor
@@ -15,14 +22,10 @@ $fi-path: "../fonts";
 @import '../vendor/foundation/scss/foundation';
 @import '../vendor/animate-sass/animate';
 
-/*! Symfony2 Template | MIT License | http://symfony2-template.io */
-// -------------------------------------
-//   Foundation
-// -------------------------------------
-
 // -------------------------------------
 //   Components
 // -------------------------------------
+@import 'components/animate';
 
 // -------------------------------------
 //   Structures
