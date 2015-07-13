@@ -1,9 +1,17 @@
 Please view this file on the master branch, on branches it may be out of date.
 
-v 1.6.0 (unreleased)
+v 1.6.0 (2015-07-13)
   - improved application configuration
+  - updated code documentation
   - fixed deprecation warnings to ensure compatibility with SF >= 2.7
   - added further tests
+  - added user profile display
+  - added support for Windows 8+ start page tiles
+  - added support for google analytics tracker
+  - updated ZURB foundation usage
+  - added support for user selected app locale
+  - removed support for changing the username
+  - added profile link to user menu
 
 v 1.5.0 (06-15-2015)
   - added proper view templates
