@@ -13,8 +13,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 class RegistrationFormType extends BaseRegistrationFormType
 {
     /**
-     * @param FormBuilderInterface $builder
-     * @param array                $options
+     * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {

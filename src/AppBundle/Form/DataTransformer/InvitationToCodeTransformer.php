@@ -44,7 +44,7 @@ class InvitationToCodeTransformer implements DataTransformerInterface
     }
 
     /**
-     * @param mixed $value
+     * @param string $value
      *
      * @return Invitation|null
      */

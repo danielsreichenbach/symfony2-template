@@ -13,8 +13,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 class ProfileFormType extends BaseProfileFormType
 {
     /**
-     * @param FormBuilderInterface $builder
-     * @param array                $options
+     * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {

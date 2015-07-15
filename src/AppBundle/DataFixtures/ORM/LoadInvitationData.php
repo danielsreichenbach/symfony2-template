@@ -22,7 +22,7 @@ class LoadInvitationData extends AbstractFixture implements OrderedFixtureInterf
     private $container;
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function setContainer(ContainerInterface $container = null)
     {
