@@ -36,3 +36,4 @@
 /composer.phar
 
 # Miscellaneous generated files
+/.coverage/

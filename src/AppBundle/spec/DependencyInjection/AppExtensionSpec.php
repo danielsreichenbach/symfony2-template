@@ -1,0 +1,14 @@
+<?php
+
+namespace spec\AppBundle\DependencyInjection;
+
+use PhpSpec\ObjectBehavior;
+use Prophecy\Argument;
+
+class AppExtensionSpec extends ObjectBehavior
+{
+    public function it_is_initializable()
+    {
+        $this->shouldHaveType('AppBundle\DependencyInjection\AppExtension');
+    }
+}

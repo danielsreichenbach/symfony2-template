@@ -19,6 +19,7 @@ sCapistrano=""
 sInstall=false
 sDatabase=false
 sTranslate=false
+sTest=false
 
 # --------------------------------------------------------------------------
 # Helper functions
@@ -31,7 +32,8 @@ function usage()
 	echo
 	echo "   -i, --install     Install local packages and generate base files."
 	echo "   -d, --database      Create and populate the development database."
-	echo "   -t; --translate                              Update translations."
+	echo "   -l; --localize                               Update localization."
+	echo "   -t; --test                                    Execute test suite."
 	echo "   -h, --help                                     Display this page."
 	echo
 	echo "Example:"
@@ -141,8 +143,12 @@ case ${i} in
 	sDatabase=true
 	shift
 	;;
-	-t|--translate)
+	-l|--localize)
 	sTranslate=true
+	shift
+	;;
+	-t|--test)
+	sTest=true
 	shift
 	;;
 	*)
@@ -196,9 +202,6 @@ if [ "${sTranslate}" == "true" ]; then
 	done
 fi
 
-# ${DIR}/../vendor/bin/phpcs --standard=${DIR}/../vendor/escapestudios/symfony2-coding-standard/Symfony2 src
-# ${DIR}/../vendor/bin/phpcbf --standard=${DIR}/../vendor/escapestudios/symfony2-coding-standard/Symfony2 src
-
 # --------------------------------------------------------------------------
 #  We have to ensure that those are writeable for the server ...
 # --------------------------------------------------------------------------
@@ -215,3 +218,13 @@ for sEnvironment in dev ; do
 	setfacl -m g:${sWebUser}:rw ${DIR}/../app/logs/${sEnvironment}.log
 	setfacl -m g:${sDevUser}:rw ${DIR}/../app/logs/${sEnvironment}.log
 done
+
+# --------------------------------------------------------------------------
+# ... and finally kick off quality assurance!
+# --------------------------------------------------------------------------
+if [ "${sTest}" == "true" ]; then
+	# ${DIR}/../vendor/bin/phpcs --standard=${DIR}/../vendor/escapestudios/symfony2-coding-standard/Symfony2 src
+	# ${DIR}/../vendor/bin/phpcbf --standard=${DIR}/../vendor/escapestudios/symfony2-coding-standard/Symfony2 src
+	${DIR}/../vendor/bin/phpunit -c app
+	${DIR}/../vendor/bin/phpspec --no-interaction run --format=dot
+fi

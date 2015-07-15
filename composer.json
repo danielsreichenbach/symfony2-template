@@ -43,8 +43,11 @@
     "require-dev": {
         "sensio/generator-bundle":                  "~2.3",
         "doctrine/doctrine-fixtures-bundle":        "~2.2",
-        "phpunit/phpunit":                          "~4",
-        "escapestudios/symfony2-coding-standard":   "~2"
+        "phpunit/phpunit":                          "~4.6",
+        "phpspec/phpspec":                          "~2.2",
+        "memio/spec-gen":                           "~0.3",
+        "escapestudios/symfony2-coding-standard":   "~2.6",
+        "henrikbjorn/phpspec-code-coverage":        "~1.0"
     },
     "suggest": {
         "ext-xdebug":                               ">=2.2.1"
