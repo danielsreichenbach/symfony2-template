@@ -10,13 +10,6 @@ namespace AppBundle\Twig\Extension;
 class GravatarExtension extends \Twig_Extension
 {
     /**
-     * Use a secure connection?
-     *
-     * @var boolean
-     */
-    private $secureRequest = false;
-
-    /**
      * Returns the list of filters provided by the extension
      *
      * @return array
@@ -25,7 +18,6 @@ class GravatarExtension extends \Twig_Extension
     {
         return array(
             new \Twig_SimpleFilter('gravatar', array($this, 'gravatarFilter')),
-            new \Twig_SimpleFilter('sgravatar', array($this, 'secureGravatarFilter')),
         );
     }
 
@@ -51,8 +43,7 @@ class GravatarExtension extends \Twig_Extension
         );
 
         $hash = md5($email);
-        $url = $this->secureRequest ? 'https://' : 'http://';
-        $url .= 'www.gravatar.com/avatar/'.$hash;
+        $url = '//www.gravatar.com/avatar/'.$hash;
 
         // Size
         if (!is_null($size)) {
@@ -66,22 +57,6 @@ class GravatarExtension extends \Twig_Extension
         }
 
         return $url;
-    }
-
-    /**
-     * Retrieves a Gravatar via secure URL
-     *
-     * @param string  $email
-     * @param integer $size
-     * @param string  $default
-     *
-     * @return string
-     */
-    public function secureGravatarFilter($email, $size = null, $default = null)
-    {
-        $this->secureRequest = true;
-
-        return $this->gravatarFilter($email, $size, $default);
     }
 
     /**
