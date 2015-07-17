@@ -48,6 +48,17 @@ class Group extends BaseGroup
     protected $updated;
 
     /**
+     * Set up the Group entity
+     *
+     * @param string $name
+     * @param array  $roles
+     */
+    public function __construct($name, $roles = array())
+    {
+        parent::__construct($name, $roles = array());
+    }
+
+    /**
      * Returns the unique identifier for the Group entity
      *
      * @return integer unique identifier
