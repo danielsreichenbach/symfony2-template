@@ -6,6 +6,9 @@ use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use AppBundle\Form\DataTransformer\InvitationToCodeTransformer;
 
+/**
+ * @author Daniel S. Reichenbach <daniel@kogitoapp.com>
+ */
 class InvitationFormTypeSpec extends ObjectBehavior
 {
     public function let(InvitationToCodeTransformer $invitationToCodeTransformer)

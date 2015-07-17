@@ -6,6 +6,9 @@ use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use AppBundle\Entity\User;
 
+/**
+ * @author Daniel S. Reichenbach <daniel@kogitoapp.com>
+ */
 class RegistrationFormTypeSpec extends ObjectBehavior
 {
     public function let(User $user)

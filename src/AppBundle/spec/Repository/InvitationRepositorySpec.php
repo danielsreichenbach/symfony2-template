@@ -7,6 +7,9 @@ use Prophecy\Argument;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Mapping\ClassMetadata;
 
+/**
+ * @author Daniel S. Reichenbach <daniel@kogitoapp.com>
+ */
 class InvitationRepositorySpec extends ObjectBehavior
 {
     public function let(EntityManager $em, ClassMetadata $classMetadata)

@@ -5,6 +5,9 @@ namespace spec\AppBundle\Twig\Extension;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
+/**
+ * @author Daniel S. Reichenbach <daniel@kogitoapp.com>
+ */
 class GravatarExtensionSpec extends ObjectBehavior
 {
     function it_is_initializable()

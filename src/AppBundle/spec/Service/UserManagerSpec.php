@@ -7,6 +7,9 @@ use Prophecy\Argument;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
+/**
+ * @author Daniel S. Reichenbach <daniel@kogitoapp.com>
+ */
 class UserManagerSpec extends ObjectBehavior
 {
     public function let(EntityManager $entityManager, ContainerInterface $containerInterface)

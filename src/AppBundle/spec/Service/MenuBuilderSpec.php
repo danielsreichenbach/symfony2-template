@@ -8,6 +8,9 @@ use Knp\Menu\FactoryInterface;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
+/**
+ * @author Daniel S. Reichenbach <daniel@kogitoapp.com>
+ */
 class MenuBuilderSpec extends ObjectBehavior
 {
     public function let(FactoryInterface $knpFactory, AuthorizationCheckerInterface $authChecker, TokenStorageInterface $tokenStorage)
