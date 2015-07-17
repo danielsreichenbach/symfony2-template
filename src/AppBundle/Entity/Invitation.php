@@ -77,7 +77,7 @@ class Invitation
     protected $user;
 
     /**
-     * Invitation under construction
+     * Set up the Invitation entity
      */
     public function __construct()
     {

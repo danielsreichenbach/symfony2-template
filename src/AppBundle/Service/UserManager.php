@@ -30,7 +30,7 @@ class UserManager
     protected $container;
 
     /**
-     * Injecting the requirements
+     * Set up the user manager
      *
      * @param EntityManager      $entityManager
      * @param ContainerInterface $containerInterface

@@ -23,7 +23,7 @@ class UserLocaleListener
     private $session;
 
     /**
-     * Set up the session
+     * Set up the event listener
      *
      * @param Session $session The current User session
      */

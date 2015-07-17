@@ -34,7 +34,7 @@ class MenuBuilder
     protected $tokenStorage;
 
     /**
-     * Menu builder constructor
+     * Set up the menu builder service
      *
      * @param FactoryInterface              $factory
      * @param AuthorizationCheckerInterface $authorizationChecker

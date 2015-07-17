@@ -26,7 +26,7 @@ class LocaleListener implements EventSubscriberInterface
     private $defaultLocale;
 
     /**
-     * set up the default locale
+     * Set up the event listener
      *
      * @param string $defaultLocale Default site locale
      */

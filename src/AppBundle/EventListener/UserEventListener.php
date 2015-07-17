@@ -37,7 +37,7 @@ class UserEventListener implements EventSubscriberInterface
     protected $container;
 
     /**
-     * Injecting the requirements
+     * Set up the event listener
      *
      * @param EntityManager      $entityManager
      * @param ContainerInterface $containerInterface

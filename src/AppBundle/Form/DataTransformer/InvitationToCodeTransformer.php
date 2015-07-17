@@ -18,6 +18,8 @@ class InvitationToCodeTransformer implements DataTransformerInterface
     protected $entityManager;
 
     /**
+     * Set up the data transformer
+     *
      * @param EntityManager $entityManager
      */
     public function __construct(EntityManager $entityManager)

@@ -20,6 +20,8 @@ class InvitationFormType extends AbstractType
     protected $invitationTransformer;
 
     /**
+     * Set up the Invitation form
+     *
      * @param InvitationToCodeTransformer $invitationTransformer
      */
     public function __construct(InvitationToCodeTransformer $invitationTransformer)

@@ -13,6 +13,20 @@ use Doctrine\ORM\EntityRepository;
 class UserRepository extends EntityRepository
 {
     /**
+     * Find the first User
+     *
+     * @return User
+     */
+    public function findFirst()
+    {
+        $qb = $this->getQueryBuilder()
+            ->orderBy('u.id', 'asc')
+            ->setMaxResults(1);
+
+        return $qb->getQuery()->getSingleResult();
+    }
+
+    /**
      * Retrieve a limited list of enabled User entities.
      *
      * @param integer $amount

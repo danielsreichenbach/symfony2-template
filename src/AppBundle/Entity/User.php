@@ -81,7 +81,7 @@ class User extends BaseUser
     protected $invitation;
 
     /**
-     * User under construction
+     * Set up the User entity
      */
     public function __construct()
     {
